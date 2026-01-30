@@ -1,0 +1,52 @@
+@font-face {
+    font-family: "PP Editorial New";
+    src: url("../fonts/PPEditorialNEW-Ultralight.otf") format("opentype");
+}
+
+:root {
+    font-size: 100%;
+    --font-family: serif;
+    --color1: white;
+    --color2: #191919;
+    --textL: 4rem;
+    --textM: 2rem;
+    --textS: 1rem;
+
+    --spaceL: 3rem;
+    --spaceM: 2rem;
+    --spaceS: 1rem;
+}
+
+body {
+    font-family: var(--font-family);
+    padding: var(--spaceL);
+    p {
+        font-size: var(--textS);
+        max-width: 60ch;
+    }
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    p{
+        padding: var(--spaceS);
+    }
+}
+
+img {
+    object-fit: contain
+}
+
+
+h1 {
+    font-size: var(--textL);
+}
+
+.header {
+    p {
+        padding-block: var(--spaceM);
+    }
+}

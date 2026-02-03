@@ -12,8 +12,8 @@
     font-size: 100%;
     --font-family: "PP Editorial New";
     --font-family2: "Arial Narrow";
-    --color1: #FFFFFF;
-    --color2: #191919;
+    --light: #FFFFFF;
+    --dark: #191919;
     --brat: #8ACE02;
     --lineheight: 95%;
     --textL: 4rem;
@@ -25,9 +25,21 @@
     --spaceS: 1rem;
 }
 
+/* I remember we dicussed light/dark mode in class but I looked it up on MDN to check how to do it 
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme
+I just swapped my root colours around  */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light: #191919;
+        --dark: #FFFFFF;
+    }
+}
+
 body {
     font-family: var(--font-family);
     font-weight: 200;
+    color: var(--dark);
+    background-color: var(--light);
     p {
         font-size: var(--textS);
         max-width: 60ch;
@@ -35,16 +47,19 @@ body {
 }
 
 article {
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; */
     padding: var(--spaceL);
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    gap: var(--spaceL);
     p{
-        padding: var(--spaceS);
+        padding-block: var(--spaceS);
     }
-    @media (width <600px ){
+
+    @media (width <900px){
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    @media (width <500px){
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -57,8 +72,7 @@ div {
     transition: all 0.5s ease-in-out;
 
     &.scrollhighlight {
-        opacity: 1;
-        
+        opacity: 1;  
     }
 
 
@@ -70,6 +84,8 @@ div {
 
 img {
     object-fit: contain;
+    inline-size: 100%;
+    object-position: left top;
 
 }
 
@@ -81,11 +97,17 @@ h1 {
     cursor: pointer;
     padding-block: var(--spaceS);
     line-height: var(--lineheight);
+    /* position: sticky;
+    top: 0; 
+    mix-blend-mode: multiply;
+    /* z-index: -1; 
+    I wanted to add this too but then my JS stopped working so will come back to it */ 
     
     &.highlight {
         background-color: var(--brat);
         transform: scale(1.2);
         text-transform: uppercase;
+        padding: var(--spaceS);
 
         @media (width < 600px) {
             transform: scale(1.08);    
@@ -93,6 +115,16 @@ h1 {
     }
 }
 
+h2 {
+    font-size: var(--textL);
+    font-family: var(--font-family2);
+    text-align: center;
+    color: var(--brat);
+    position: sticky;
+    top: 0;
+    /* z-index: -1; */
+    mix-blend-mode: multiply;
+}
 
 
 .header {
@@ -109,19 +141,51 @@ footer {
     margin-block: calc(var(--spaceL)*2);
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: var(--spaceM);
     padding-inline: var(--spaceL);
 
     p {
         text-align: center;
         font-family: var(--font-family2);
-        background-color: var(--color2);
-        color: var(--color1);   
+        background-color: var(--dark);
+        color: var(--light); 
+        padding: var(--spaceS);  
+
+        :hover {
+            color: var(--brat);
+        }
     }
 
-     @media (width <600px ){
+    @media (width <500px ){
         flex-direction: column;
-        padding-inline: 0;
     }
 
+
+}
+
+summary {
+    font-size: var(--textM);
+    font-family: var(--font-family2);
+
+     @media (width <500px){
+        text-align: center;
+       
+    }
+}
+
+a img {
+    border-style: solid;
+    border-width: 5px;
+    border-color: var(--dark);
+}
+
+a:hover img {
+    border-color: var(--brat);
+    cursor: pointer;
+}
+
+summary:hover {
+    color: var(--brat);
+    cursor: pointer;
 }

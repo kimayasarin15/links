@@ -1,4 +1,6 @@
 
+
+// Another test to try out JS 
 let highlightClass = 'highlight'
 let text = document.querySelector('h1')
 let clickButton = document.querySelector('#click')

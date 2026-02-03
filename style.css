@@ -95,7 +95,7 @@ h1 {
     font-family: var(--font-family2);
     text-align: center;
     cursor: pointer;
-    padding-block: var(--spaceS);
+    padding-block-end: var(--spaceL);
     line-height: var(--lineheight);
     /* position: sticky;
     top: 0; 
@@ -116,14 +116,20 @@ h1 {
 }
 
 h2 {
-    font-size: var(--textL);
+    font-size: var(--textM);
     font-family: var(--font-family2);
     text-align: center;
     color: var(--brat);
+}
+
+
+
+.textscroll {
     position: sticky;
     top: 0;
     /* z-index: -1; */
     mix-blend-mode: multiply;
+    /* background-color: var(--dark); */
 }
 
 
@@ -135,6 +141,10 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+
+    h2 {
+        padding-block-start: var(--spaceL);
+    }
 }
 
 footer {
@@ -152,7 +162,7 @@ footer {
         color: var(--light); 
         padding: var(--spaceS);  
 
-        :hover {
+    a{
             color: var(--brat);
         }
     }

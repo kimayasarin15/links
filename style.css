@@ -126,7 +126,8 @@ h2 {
 
 .textscroll {
     position: sticky;
-    top: 0;
+    top: 10px;
+    font-size: calc(var(--textL)*2);
     /* z-index: -1; */
     mix-blend-mode: multiply;
     /* background-color: var(--dark); */
@@ -199,3 +200,22 @@ summary:hover {
     color: var(--brat);
     cursor: pointer;
 }
+
+/* need to come back to styling this */
+iframe {
+    height: 100%;
+}
+
+.caption {
+    font-family: var(--font-family2);
+    font-size: calc(var(--textS)*0.8);
+    opacity: 0;
+}
+
+
+/* I think I want this to appear when you hover over the media source but have done it like this for now */
+.caption:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+

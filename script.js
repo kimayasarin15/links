@@ -32,3 +32,30 @@ let sectionObserver = new IntersectionObserver(([entry]) => {
 })
 sectionObserver.observe(block)
 })
+
+
+// Trying out using modal from the class example 
+// This works for my first button but I need to make it work for all - tried with loops but wasn't working will come back to this
+
+
+let modalButton = document.querySelector('#modal')
+let modalDialog = document.querySelector('#dialog')
+let closeButton = document.querySelector('#close')
+
+
+
+modalButton.addEventListener('click', () => {
+    modalDialog.showModal()
+})
+
+
+closeButton.addEventListener('click', () => {
+    modalDialog.close()
+})
+
+
+document.addEventListener('click', (event) => {
+    if(event.target == document.documentElement) {
+        modalDialog.close()
+    }
+})

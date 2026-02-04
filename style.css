@@ -55,8 +55,12 @@ article {
         padding-block: var(--spaceS);
     }
 
-    @media (width <900px){
+    @media (width <950px){
         grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    @media (width <700px){
+        grid-template-columns: 2fr 1fr;
     }
 
     @media (width <500px){
@@ -131,6 +135,14 @@ h2 {
     /* z-index: -1; */
     mix-blend-mode: multiply;
     /* background-color: var(--dark); */
+
+    @media (width <700px){
+        font-size: var(--textL); 
+    }
+
+    @media (width < 500px) {
+            font-size: var(--textM);  
+        }
 }
 
 
@@ -159,12 +171,12 @@ footer {
     p {
         text-align: center;
         font-family: var(--font-family2);
-        background-color: var(--dark);
-        color: var(--light); 
+        color: var(--dark); 
         padding: var(--spaceS);  
 
     a{
             color: var(--brat);
+            background-color: var(--dark);
         }
     }
 
@@ -219,3 +231,52 @@ iframe {
     cursor: pointer;
 }
 
+
+/* testing out using modal */
+
+body:has(dialog[open]) { overflow: hidden; }
+
+dialog {
+
+    background-color: var(--light);
+    filter: drop-shadow(0 0.2rem 1rem rgb(0 0 0 / 30%));
+    justify-items: center;
+    color: var(--dark);
+    padding: var(--spaceL);
+    inset-block-start: 50%;
+	inset-inline-start: 50%;
+	position: fixed; 
+	translate: -50% -50%;
+
+    @media(width <600px){
+        width: 90vw;
+        padding: var(--spaceM);
+    }
+
+    &[open] { display: grid }
+
+    button {
+        background-color: var(--dark);
+        color: var(--brat);
+        font-family: var(--font-family2);
+        font-size: var(--textS);
+        padding: calc(var(--spaceS)*0.2);
+    }
+
+    &::backdrop {
+		background-color: rgb(0 0 0 / 40%);
+		pointer-events: none; 
+	}
+
+
+}
+
+
+button {
+    font-family: var(--font-family2);
+    font-size: var(--textM);
+    color: var(--dark);
+    background-color: var(--brat);
+    padding: calc(var(--spaceS)*0.2);
+    cursor: pointer;
+}

@@ -5,9 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="reset.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
-        <script defer src="script.js"></script>
+        <!-- <script defer src="script.js"></script> -->
+        <script defer src="assets/arena.js"></script>
     </head>
-    <body>
+	<body>
+		<header>
+			<h1 id="channel-title"></h1>
+			<p><a id="channel-link">Are.na</a></p>
+			<section id="channel-description"></section>
+		</header>
+		<main>
+            <!-- I got this to work as the channel slug from arena instead of writing it out! I defined the variable just like the others-->
+            <h2 id="channel-slug"></h2>
+			<section>
+				<ul id="channel-blocks"></ul>
+				<p><span id="channel-count"></span> blocks</p>
+			</section>
+		</main>
+		<footer>
+			<h2>Your authors</h2>
+			<section id="channel-users"></section>
+		</footer>
+	</body>
+
+
+    <!-- <body>
         <section class="header">
             <h1 id="click">Girl, so confusing ft. lorde</h1>
             <p>A collection, inspired by Charli XCX’s song and its remix with Lorde, exploring how female friendship and platonic love are often misunderstood, dramatized, or flattened by culture. Together, these fragments argue for female friendship as a relationship of profound complexity—one that resists simplification and holds emotional depth equal to (if not greater than) romance.</p>
@@ -55,7 +77,7 @@
                 <button id="modal">Comfort</button>
 		        <dialog id="dialog">
 			        <p>One reason women have traditionally gossiped more than men is because gossip has been a social interaction wherein women have felt comfortable stating what they really think and feel. — bell hooks, all about love</p>
-			        <button id="close">Close</button>
+			        <button>Close</button>
                 </dialog>
             </div>
             <div>
@@ -117,5 +139,5 @@
             <p>designed by <a href="https://kimayasarin15.github.io/">Kimaya Sarin</a></p>
             <p>collected by <a href="https://sooimkang07.github.io/">Sooim Kang</a></p>
         </footer>
-    </body>
+    </body> -->
 </html>

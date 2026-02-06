@@ -103,6 +103,15 @@ let renderBlock = (blockData) => {
 		// Uploaded PDFs!
 		else if (contentType.includes('pdf')) {
 			// …up to you!
+			let pdfItem =
+				`
+				<li>
+					<p><em>PDF</em></p>
+					<a href="${ blockData.attachment.url }">Download PDF</a>
+				</li>
+				`
+
+			channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		}
 
 		// Uploaded audio!
@@ -147,6 +156,15 @@ let renderBlock = (blockData) => {
 		// Linked audio!
 		else if (embedType.includes('rich')) {
 			// …up to you!
+			let linkedAudioitem =
+				`
+				<li>
+					<p><em>Linked Audio</em></p>
+					${ blockData.embed.html }
+				</li>
+				`
+
+			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioitem)
 		}
 	}
 }

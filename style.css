@@ -49,18 +49,20 @@ body {
 #channel-blocks {
     padding: var(--spaceL);
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    /* had problems with 1fr */
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
     gap: var(--spaceS);
+
     p{
         padding-block: var(--spaceS);
     }
 
     @media (width <950px){
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
     }
 
     @media (width <700px){
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     }
 
     @media (width <500px){
@@ -73,6 +75,10 @@ body {
         opacity: 1;  
     }
     
+}
+
+section {
+ min-inline-size: 0;
 }
 
 #channel-blocks img {

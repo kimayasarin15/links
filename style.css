@@ -220,6 +220,8 @@ a img {
     border-color: var(--dark);
 }
 
+
+
 a:hover img {
     border-color: var(--brat);
     cursor: pointer;
@@ -247,6 +249,8 @@ iframe {
     opacity: 1;
     cursor: pointer;
 }
+
+
 
 
 /* testing out using modal */

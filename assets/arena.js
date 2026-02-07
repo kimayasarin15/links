@@ -33,7 +33,6 @@ let renderBlock = (blockData) => {
 		let linkItem =
 			`
 			<li>
-				<p><em>Link</em></p>
 				<figure>
 					<picture>
 						<source media="(width < 500px)" srcset="${ blockData.image.small.src_2x }">
@@ -61,7 +60,6 @@ let renderBlock = (blockData) => {
 		let imageItem = 
         `
           <li>
-            <p><em>Image</em></p>
             <figure>
                 <picture>
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -77,6 +75,7 @@ let renderBlock = (blockData) => {
 	// Text!
 	else if (blockData.type == 'Text') {
 		// …up to you!
+		
 	}
 
 	// Uploaded (not linked) media…
@@ -104,13 +103,16 @@ let renderBlock = (blockData) => {
 		else if (contentType.includes('pdf')) {
 			// …up to you!
 			let pdfItem =
-				`
-				<li>
-					<p><em>PDF</em></p>
+				   `
+        		<li>
+           			<p><em>PDF</em></p>
+					<iframe
+						src="${ blockData.attachment.url }"
+						title="${ blockData.title}"
+					></iframe>
 					<a href="${ blockData.attachment.url }">Download PDF</a>
-				</li>
-				`
-
+        		</li>
+       			 `
 			channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		}
 
@@ -121,7 +123,7 @@ let renderBlock = (blockData) => {
 				`
 				<li>
 					<p><em>Audio</em></p>
-					<audio controls src="${ blockData.attachment.url }"></video>
+					<audio controls src="${ blockData.attachment.url }"></audio>
 				</li>
 				`
 
@@ -190,15 +192,31 @@ let renderUser = (userData) => {
 
 
 // Finally, a helper function to fetch data from the API, then run a callback function with it:
-let fetchJson = (url, callback) => {
+
+
+let fetchJson = (url, callback, pageResponses = []) => {
 	fetch(url, { cache: 'no-store' })
 		.then((response) => response.json())
-		.then((json) => callback(json))
+		.then((json) => {
+			// Add this page to our temporary “accumulator” list parameter (an array).
+			pageResponses.push(json)
+
+			// Are.na response includes this “there are more!” flag (a boolean):
+			if (json.meta && json.meta.has_more_pages) { // If that exists and is `true`, keep going…
+				// Fetch *another* page worth, passing along our previous/accumulated responses.
+				fetchJson(`${url}&page=${pageResponses.length + 1}`, callback, pageResponses)
+			} else { // If it is `false`, there are no more pages…
+				// “Flattens” them all together as if they were one page response.
+				json.data = pageResponses.flatMap((page) => page.data)
+
+				// Return the data to the callback!
+				callback(json)
+			}
+	})
 }
 
 // More on `fetch`:
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch
-
 
 
 // Now that we have said all the things we *can* do, go get the channel data:

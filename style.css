@@ -206,6 +206,14 @@ footer section {
 
 }
 
+
+
+main section {
+    background-color: var(--brat);
+    margin: var(--spaceM);
+}
+
+
 /* Align-self allows me to isolate some of the grid items I found this on MDN https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-self I wanted to create a more flexible and lose grid system by aligning some of the elements to the bottom of the grid */
 .align {
     align-self: end;

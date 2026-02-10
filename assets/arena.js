@@ -77,7 +77,7 @@ let renderBlock = (blockData) => {
 		 let textItem =
     `
     <li> 
-        <button class="modal-button">${blockData.title || 'More'}</button>
+        <button class="modal-button">${blockData.title || 'read more'}</button>
         <dialog class="modal-dialog">
             <h2>${blockData.title}</h2>
             ${blockData.content.html}

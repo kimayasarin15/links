@@ -81,15 +81,8 @@ section {
  min-inline-size: 0;
 }
 
-#channel-blocks img {
-    max-width: 100%;
-}
-
-#channel-blocks link {
-    max-width: 100%;
-}
-
-div {
+/* come back to this  */
+/* li {
     padding-block: var(--spaceL);
     opacity: 0.2;
     transition: all 0.5s ease-in-out;
@@ -103,12 +96,6 @@ div {
         padding-block: var(--spaceS);
     }
 
-}
-
-/* img {
-    object-fit: contain;
-    inline-size: 100%;
-    object-position: left top;
 } */
 
 h1 {
@@ -177,7 +164,7 @@ header {
     }
 }
 
-footer {
+footer section {
     margin-block: calc(var(--spaceL)*2);
     display: flex;
     flex-direction: row;
@@ -185,7 +172,7 @@ footer {
     gap: var(--spaceM);
     padding-inline: var(--spaceL);
 
-    p {
+    h3, p {
         text-align: center;
         font-family: var(--font-family2);
         color: var(--dark); 
@@ -202,16 +189,6 @@ footer {
     }
 
 
-}
-
-summary {
-    font-size: var(--textM);
-    font-family: var(--font-family2);
-
-     @media (width <500px){
-        text-align: center;
-       
-    }
 }
 
 a img {
@@ -232,10 +209,6 @@ summary:hover {
     cursor: pointer;
 }
 
-/* need to come back to styling this */
-iframe {
-    height: 100%;
-}
 
 .caption {
     font-family: var(--font-family2);
@@ -249,6 +222,7 @@ iframe {
     opacity: 1;
     cursor: pointer;
 }
+
 
 
 
@@ -300,4 +274,67 @@ button {
     background-color: var(--brat);
     padding: calc(var(--spaceS)*0.2);
     cursor: pointer;
+}
+
+
+
+li {
+    min-width: 0;
+    overflow: hidden;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+iframe {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    display: block;
+}
+
+
+audio {
+    max-width: 100%;
+    display: block;
+}
+
+
+figure {
+    min-width: 0;
+}
+
+
+.video-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.audio-wrapper {
+    width: 100%;
+    padding: var(--spaceS);
+    background-color: var(--dark);
+}
+
+.audio-wrapper audio {
+    width: 100%;
+    display: block;
 }

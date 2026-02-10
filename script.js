@@ -17,7 +17,7 @@ clickButton.addEventListener('click', () => {
 // I altered the opacity to change as you scroll I'm not sure I want to do this yet but I wanted to try it out to practice JS
 
 let highlightScroll = 'scrollhighlight'
-let blockScroll = document.querySelectorAll('li')
+let blockScroll = document.querySelectorAll('ul')
 
 
 blockScroll.forEach((block) => {
@@ -38,24 +38,26 @@ sectionObserver.observe(block)
 // This works for my first button but I need to make it work for all - tried with loops but wasn't working will come back to this
 
 
-let modalButton = document.querySelector('#modal')
-let modalDialog = document.querySelector('#dialog')
-let closeButton = modalDialog.querySelector('button')
+// let modalButton = document.querySelector('#modal')
+// let modalDialog = document.querySelector('#dialog')
+// let closeButton = modalDialog.querySelector('button')
 
 
 
-modalButton.addEventListener('click', () => {
-    modalDialog.showModal()
-})
+// modalButton.addEventListener('click', () => {
+//     modalDialog.showModal()
+// })
 
 
-closeButton.addEventListener('click', () => {
-    modalDialog.close()
-})
+// closeButton.addEventListener('click', () => {
+//     modalDialog.close()
+// })
 
 
-document.addEventListener('click', (event) => {
-    if(event.target == document.documentElement) {
-        modalDialog.close()
-    }
-})
+// document.addEventListener('click', (event) => {
+//     if(event.target == document.documentElement) {
+//         modalDialog.close()
+//     }
+// })
+
+

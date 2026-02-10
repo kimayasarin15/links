@@ -41,10 +41,8 @@ let renderBlock = (blockData) => {
 					</picture>
 					<figcaption>
 						<h3>${ blockData.title }</h3>
-						${ blockData.description.html }
 					</figcaption>
 				</figure>
-				<p><a href="${ blockData.source.url }">See the original ↗</a></p>
 			</li>
 			`
 
@@ -75,7 +73,20 @@ let renderBlock = (blockData) => {
 	// Text!
 	else if (blockData.type == 'Text') {
 		// …up to you!
-		
+		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'More' I haven't been able to get my dialog elements to work with js yet but I wanted to set them up like this so I can later
+		 let textItem =
+    `
+    <li> 
+        <button class="modal-button">${blockData.title || 'More'}</button>
+        <dialog class="modal-dialog">
+            <h2>${blockData.title}</h2>
+            ${blockData.content.html}
+            <button class="close-button">Close</button>
+        </dialog>
+    </li>
+    `
+    channelBlocks.insertAdjacentHTML('beforeend', textItem)
+
 	}
 
 	// Uploaded (not linked) media…
@@ -105,12 +116,11 @@ let renderBlock = (blockData) => {
 			let pdfItem =
 				   `
         		<li>
-           			<p><em>PDF</em></p>
 					<iframe
 						src="${ blockData.attachment.url }"
 						title="${ blockData.title}"
-					></iframe>
-					<a href="${ blockData.attachment.url }">Download PDF</a>
+					>
+					</iframe>
         		</li>
        			 `
 			channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
@@ -122,12 +132,13 @@ let renderBlock = (blockData) => {
 			let audioItem =
 				`
 				<li>
-					<p><em>Audio</em></p>
-					<audio controls src="${ blockData.attachment.url }"></audio>
+					<div class="audio-wrapper">
+						<audio controls src="${ blockData.attachment.url }"></audio>
+					</div>
 				</li>
 				`
 
-			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
+    		channelBlocks.insertAdjacentHTML('beforeend', audioItem)
 
 			// More on`audio`:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -138,19 +149,36 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Embed') {
 		let embedType = blockData.embed.type
 
+
 		// Linked video!
 		if (embedType.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
-			let linkedVideoItem =
-				`
-				<li>
-					<p><em>Linked Video</em></p>
-					${ blockData.embed.html }
-				</li>
-				`
+			let linkedVideoItem = `
+    <li class="block-item">
+        <button class="modal-button">
+            <div class="thumbnail-container">
+                <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
+            </div>
+            <p><em>${blockData.title || 'Video'}</em></p>
+        </button>
 
-			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
+        <dialog class="modal-dialog">
+            <h2>${blockData.title}</h2>
+            
+            <div class="video-wrapper">
+                ${blockData.embed.html}
+            </div>
 
+            <div class="description">
+                ${blockData.description ? blockData.description.html : ''}
+            </div>
+
+            <button class="close-button">Close</button>
+        </dialog>
+    </li>
+`;
+
+channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem);
 			// More on `iframe`:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}
@@ -161,7 +189,7 @@ let renderBlock = (blockData) => {
 			let linkedAudioitem =
 				`
 				<li>
-					<p><em>Linked Audio</em></p>
+					<!-- <p><em>Linked Audio</em></p> -->
 					${ blockData.embed.html }
 				</li>
 				`
@@ -182,7 +210,7 @@ let renderUser = (userData) => {
 		<address>
 		     <!-- <img src="${ userData.avatar }"> -->
 			<h3>${ userData.name }</h3>
-			<p><a href="https://are.na/${ userData.slug }">Are.na profile ↗</a></p>
+			<p><a href="https://are.na/${ userData.slug }">Are.na profile</a></p>
 		</address>
 		`
 

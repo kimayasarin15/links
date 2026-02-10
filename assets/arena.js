@@ -32,8 +32,8 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-			<li>
-				<figure>
+			<li class="align"> 
+				<figure class="linkblock" >
 					<picture>
 						<source media="(width < 500px)" srcset="${ blockData.image.small.src_2x }">
 						<source media="(width < 1000px)" srcset="${ blockData.image.medium.src_2x }">
@@ -131,8 +131,8 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
-					<div class="audio-wrapper">
+				<li class="align">
+					<div class="audiowrapper">
 						<audio controls src="${ blockData.attachment.url }"></audio>
 					</div>
 				</li>

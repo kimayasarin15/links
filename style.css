@@ -179,7 +179,7 @@ header {
     }
 }
 
-footer {
+footer section {
     margin-block: calc(var(--spaceL)*2);
     display: flex;
     flex-direction: row;

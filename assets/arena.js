@@ -57,7 +57,7 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Image') {
 		let imageItem = 
         `
-          <li>
+          <li class="hover">
             <figure>
                 <picture>
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">

@@ -40,7 +40,7 @@ let renderBlock = (blockData) => {
 						<img alt="${blockData.image.alt_text}" src="${ blockData.image.large.src_2x }">
 					</picture>
 					<figcaption>
-						<h3>${ blockData.title }</h3>
+						<h3><a href="${ blockData.source.url }">${ blockData.title }</a></h3>
 					</figcaption>
 				</figure>
 			</li>
@@ -153,33 +153,32 @@ let renderBlock = (blockData) => {
 		// Linked video!
 		if (embedType.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
-			// Claude helped me this this up to fit the format of my modals but I can't get the js to work the model button shows the thumbnail image and the video title. When open it shows the title, emdeded content, description and close button. I wanted to use thumnail images for my videos as it was taking up too much space on the page: I also like the old polaroid-y feel of the white borders 
+			// Claude helped me this this up to fit the format of my modals but I can't get the js to work. The model button shows the thumbnail image and the video title. When open it shows the title, emdeded content, description and close button. I wanted to use thumnail images for my videos as it was taking up too much space on the page.
 			let linkedVideoItem = `
-    <li class="block-item">
-        <button class="modal-button">
-            <div class="thumbnail-container">
-                <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
-            </div>
-            <p><em>${blockData.title || 'Video'}</em></p>
-        </button>
+					<li class="block-item">
+						<button class="modal-button">
+							<div class="thumbnail-container">
+								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
+							</div>
+							<p><em>${blockData.title || 'Video'}</em></p>
+						</button>
 
-        <dialog class="modal-dialog">
-            <h2>${blockData.title}</h2>
-            
-            <div class="video-wrapper">
-                ${blockData.embed.html}
-            </div>
+						<dialog class="modal-dialog">
+							<h2>${blockData.title}</h2>
 
-            <div class="description">
-                ${blockData.description ? blockData.description.html : ''}
-            </div>
+							<div class="videowrapper">
+								${blockData.embed.html}
+							</div>
 
-            <button class="close-button">Close</button>
-        </dialog>
-    </li>
-`;
+							<div class="description">
+								${blockData.description ? blockData.description.html : ''}
+							</div>
 
-channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem);
+							<button class="close-button">Close</button>
+						</dialog>
+					</li>
+				`			
+				channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem);
 			// More on `iframe`:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}

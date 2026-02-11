@@ -221,6 +221,10 @@ main section {
 
 .hover:hover {
     transform: scale(1.05);
+
+    @media (width < 600px) {
+        transform: none; 
+    }
 }
 
 .linkblock {
@@ -310,23 +314,17 @@ iframe {
 }
 
 
-audio {
-    max-width: 100%;
-    display: block;
-}
-
-
 figure {
     min-width: 0;
 }
 
 
-.video-wrapper {
+.videowrapper {
     max-width: 100%;
     overflow: hidden;
 }
 
-.video-wrapper iframe {
+.videowrapper iframe {
     max-width: 100%;
     display: block;
     margin-block: 0;
@@ -339,13 +337,14 @@ figure {
     background-color: var(--dark);
 }
 
-.audio-wrapper audio {
-    width: 100%;
-    display: block;
+audio {
+	block-size: revert;
+	inline-size: 100%;
 }
 
 dialog {
-    max-width: 80vw;
-    max-height: 80vh;
+    max-width: 75vw;
+    max-height: 75vh;
     overflow-y: auto;
+    /* overflow-y: auto allows vertical scroll */
 }

@@ -217,6 +217,8 @@ footer section {
 /* Align-self allows me to isolate some of the grid items I found this on MDN https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-self I wanted to create a more flexible and loose grid system by aligning some of the elements to the bottom of the grid */
 .align {
     align-self: end;
+    width: 100%;
+    /* added with: 100% so the audio takes up the whole width on mobile */
 }
 
 .hover:hover {

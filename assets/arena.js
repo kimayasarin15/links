@@ -73,7 +73,7 @@ let renderBlock = (blockData) => {
 	// Text!
 	else if (blockData.type == 'Text') {
 		// …up to you!
-		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'More' I haven't been able to get my dialog elements to work with js yet but I wanted to set them up like this so I can later
+		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'More'
 		
 		let textItem = `
 			<li class="block-item"> 

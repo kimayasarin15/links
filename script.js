@@ -61,3 +61,27 @@ sectionObserver.observe(block)
 // })
 
 
+// I used the help of Claude to get my text modals to work, which follows a simialr structure to the one I did above but allows it to work for all
+
+// this is searching within my channel blocks
+document.querySelector('#channel-blocks').addEventListener('click', (event) => {
+    
+    // this is saying if the class list contains a modal-button, find the dialog inside the li element and show the modal on click
+    if (event.target.classList.contains('modal-button')) {
+        let dialog = event.target.closest('li').querySelector('dialog');
+        dialog.showModal();
+    }
+
+    // this is saying if the class list contains a close-button, find the closest dialog element and close it
+    if (event.target.classList.contains('close-button')) {
+        let dialog = event.target.closest('dialog');
+        dialog.close();
+    }
+});
+
+// this is saying if the user clicks outside the dialog button the modal should close
+document.addEventListener('click', (event) => {
+    if (event.target.tagName === 'DIALOG') {
+        event.target.close();
+    }
+});

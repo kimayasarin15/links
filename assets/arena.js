@@ -74,18 +74,18 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Text') {
 		// …up to you!
 		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'More' I haven't been able to get my dialog elements to work with js yet but I wanted to set them up like this so I can later
-		 let textItem =
-    `
-    <li> 
-        <button class="modal-button">${blockData.title || 'read more'}</button>
-        <dialog class="modal-dialog">
-            <h2>${blockData.title}</h2>
-            ${blockData.content.html}
-            <button class="close-button">Close</button>
-        </dialog>
-    </li>
-    `
-    channelBlocks.insertAdjacentHTML('beforeend', textItem)
+		
+		let textItem = `
+			<li class="block-item"> 
+				<button class="modal-button">${blockData.title || 'read more'}</button>
+				<dialog class="modal-dialog">
+					<h3>${blockData.title || 'Text Block'}</h3>
+					<div class="modal-content">${blockData.content.html}</div>
+					<button class="close-button">Close</button>
+				</dialog>
+			</li>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', textItem);
 
 	}
 
@@ -153,6 +153,7 @@ let renderBlock = (blockData) => {
 		// Linked video!
 		if (embedType.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
+			// Claude helped me this this up to fit the format of my modals but I can't get the js to work the model button shows the thumbnail image and the video title. When open it shows the title, emdeded content, description and close button. I wanted to use thumnail images for my videos as it was taking up too much space on the page: I also like the old polaroid-y feel of the white borders 
 			let linkedVideoItem = `
     <li class="block-item">
         <button class="modal-button">

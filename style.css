@@ -124,16 +124,6 @@ h1 {
     }
 }
 
-/* I had initially done this above through js but I can't get my script file to work right now */
-h1:hover {
-    background-color: var(--brat);
-    transform: scale(1.2);
-    text-transform: uppercase;
-    padding: var(--spaceS);
-
-
-}
-
 h2 {
     font-size: var(--textM);
     font-family: var(--font-family2);
@@ -151,12 +141,12 @@ h3 {
 #channel-slug {
     position: sticky;
     top: 50%;
-    font-size: calc(var(--textL)*2);
+    font-size: calc(var(--textL)*2.5);
     /* z-index: -1; */
     mix-blend-mode: multiply;
     /* background-color: var(--dark); */
 
-    @media (width <700px){
+    @media (width <900px){
         font-size: var(--textL); 
     }
 
@@ -164,6 +154,20 @@ h3 {
             font-size: var(--textM);  
         }
 }
+
+/* #background {
+    font-size: calc(var(--textL)*2);
+    mix-blend-mode: multiply;
+    z-index: -1;
+    position: absolute;
+    opacity: 0.3;
+    line-height: 90%;
+}
+
+#foreground {
+    z-index: 1;
+    position: relative;
+} */
 
 header {
     padding: var(--spaceL);
@@ -214,7 +218,7 @@ main section {
 }
 
 
-/* Align-self allows me to isolate some of the grid items I found this on MDN https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-self I wanted to create a more flexible and lose grid system by aligning some of the elements to the bottom of the grid */
+/* Align-self allows me to isolate some of the grid items I found this on MDN https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-self I wanted to create a more flexible and loose grid system by aligning some of the elements to the bottom of the grid */
 .align {
     align-self: end;
 }
@@ -280,17 +284,11 @@ button {
     font-family: var(--font-family2);
     font-size: var(--textM);
     color: var(--dark);
-    background-color: var(--brat);
+    background-color: var(--light);
     padding: calc(var(--spaceS)*0.2);
     cursor: pointer;
 }
 
-
-
-li {
-    min-width: 0;
-    overflow: hidden;
-}
 
 
 img {
@@ -334,7 +332,8 @@ figure {
 .video-wrapper iframe {
     max-width: 100%;
     display: block;
-    margin: 0 auto;
+    margin-block: 0;
+    margin-inline: auto;
 }
 
 .audiowrapper {
@@ -346,4 +345,10 @@ figure {
 .audio-wrapper audio {
     width: 100%;
     display: block;
+}
+
+dialog {
+    max-width: 80vw;
+    max-height: 80vh;
+    overflow-y: auto;
 }

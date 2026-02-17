@@ -39,27 +39,23 @@ clickButton.addEventListener('click', () => {
 // This works for my first button but I need to make it work for all - tried with loops but wasn't working will come back to this
 
 
-// let modalButton = document.querySelector('#modal')
-// let modalDialog = document.querySelector('#dialog')
-// let closeButton = modalDialog.querySelector('button')
+let modalButton = document.querySelector('.modal-button')
+let modalDialog = document.querySelector('header dialog')
+let closeButton = modalDialog.querySelector('.close-button')
 
+modalButton.addEventListener('click', () => {
+    modalDialog.showModal()
+})
 
+closeButton.addEventListener('click', () => {
+    modalDialog.close()
+})
 
-// modalButton.addEventListener('click', () => {
-//     modalDialog.showModal()
-// })
-
-
-// closeButton.addEventListener('click', () => {
-//     modalDialog.close()
-// })
-
-
-// document.addEventListener('click', (event) => {
-//     if(event.target == document.documentElement) {
-//         modalDialog.close()
-//     }
-// })
+document.addEventListener('click', (event) => {
+    if(event.target.tagName === 'DIALOG') {
+        event.target.close()
+    }
+})
 
 
 // I used the help of Claude to get my text modals to work, which follows a simialr structure to the one I did above but allows it to work for all

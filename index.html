@@ -10,13 +10,14 @@
     </head>
 	<body>
 		<header>
-            <!--  tried this but my channel description was getting off centered so will come back to it -->
-            <!-- <div id="foreground"> -->
 			<div id="click"> <h1 id="channel-title"></h1> </div>
-			<p><a id="channel-link">Are.na</a></p>
-			<section id="channel-description"></section>
-             <h2>explore below</h2></div>
-             <!-- </div> -->
+            <button class="modal-button">find out more</button>
+            <dialog class="modal-dialog">
+                <section id="channel-description"></section>
+                <p><a id="channel-link">view on are.na</a></p>
+                <button class="close-button">Close</button>
+            </dialog>
+          
             <!-- <h2 id="background">Girl, it's so confusing sometimes to be a girl Girl, how do you feel being a girl? Man, I don't know, I'm just a girl </h2> -->
 		</header>
 		<main>
@@ -25,13 +26,13 @@
 			<section>
 				<ul id="channel-blocks"></ul>
                 <!-- I'm having an issue with this, whenver I try to remove it, it removes Sooim's user id and link when I use #channel-users, need to come back to it -->
-				<p><span id="channel-count"></span> blocks</p>
+				<!-- <p><span id="channel-count"></span> blocks</p> -->
 			</section>
 		</main>
 		<footer>
-            <!-- <p>designed by <a href="https://kimayasarin15.github.io/">Kimaya Sarin</a></p>
-            <p>collected by <a href="https://sooimkang07.github.io/">Sooim Kang</a></p> -->
-			<section id="channel-users"></section>
+            <p>designed by <a href="https://kimayasarin15.github.io/">Kimaya Sarin</a></p>
+            <p>collected by <a href="https://sooimkang07.github.io/">Sooim Kang</a></p>
+			<!-- <section id="channel-users"></section> -->
 		</footer>
 	</body>
 </html>

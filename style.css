@@ -42,6 +42,7 @@ body {
     font-weight: 200;
     color: var(--dark);
     background-color: var(--light);
+    text-wrap: balance;
     p {
         font-size: var(--textS);
         max-width: 60ch;
@@ -113,6 +114,7 @@ h1 {
     cursor: pointer;
     padding-block-end: var(--spaceL);
     line-height: var(--lineheight);
+    animation: blinking 1s ease-in-out;
     
     &.highlight {
         background-color: var(--brat);
@@ -126,11 +128,33 @@ h1 {
     }
 }
 
+/* looked at the class website to add some animation to the title - not sure about this yet */
+@keyframes blinking {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+
 h2 {
     font-size: var(--textM);
     font-family: var(--font-family2);
     text-align: center;
     color: var(--brat);
+    margin: var(--spaceS);
+
+    /* @media (width <600px){
+        font-size: var(--textS);
+        
+    } */
 }
 
 h3 {
@@ -138,6 +162,14 @@ h3 {
     font-family: var(--font-family);
     color: var(--dark);
     padding: var(--spaceS);
+    
+}
+
+p {
+    font-size: var(--textS);
+    font-family: var(--font-family2);
+    color: var(--dark);
+
 }
 
 #channel-slug {
@@ -151,14 +183,18 @@ h3 {
         font-size: var(--textL); 
     }
 
-    @media (width < 500px) {
-            font-size: var(--textM);  
-        }
+
 }
 
+#channel-link {
+    color: var(--brat);
+    font-family: var(--font-family);
+    text-decoration: underline;
+    margin: var(--spaceS);
+}
 /* come back to this */
 /* #background {
-    font-size: calc(var(--textL)*2);
+    font-size: calc(var(--textL)*3);
     mix-blend-mode: multiply;
     z-index: -1;
     position: absolute;
@@ -185,7 +221,7 @@ header {
     }
 }
 
-footer section {
+footer {
     margin-block: calc(var(--spaceL)*2);
     display: flex;
     flex-direction: row;
@@ -243,18 +279,6 @@ footer section {
     }
 }
 
-.linkblock {
-    border-style: solid;
-    border-width: 5px;
-    border-color: var(--dark);
-}
-
-
-
-.linkblock:hover{
-    border-color: var(--brat);
-    cursor: pointer;
-}
 
 /* testing out using modal from the class website */
 
@@ -271,11 +295,17 @@ dialog {
 	inset-inline-start: 50%;
 	position: fixed; 
 	translate: -50% -50%;
-    width: 50vw;
+    width:50vw;
     height: 50vh;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+     /* overflow-y: auto allows vertical scroll */
 
     @media(width <600px){
         width: 90vw;
+        height: auto;          
+        max-height: 85vh;       
         padding: var(--spaceM);
     }
 
@@ -305,6 +335,7 @@ button {
     background-color: var(--brat);
     padding: calc(var(--spaceS)*0.2);
     cursor: pointer;
+    margin: var(--spaceS);
 }
 
 
@@ -355,6 +386,10 @@ figure {
     width: 100%;
     padding: var(--spaceS);
     background-color: var(--dark);
+    @media (width <600px){
+     width: 80%;
+        
+    }
 }
 
 audio {
@@ -362,9 +397,3 @@ audio {
 	inline-size: 100%;
 }
 
-dialog {
-    max-width: 75vw;
-    max-height: 75vh;
-    overflow-y: auto;
-    /* overflow-y: auto allows vertical scroll */
-}

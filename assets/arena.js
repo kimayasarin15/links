@@ -32,18 +32,26 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-			<li class="align alignright"> 
-				<figure class="linkblock" >
-					<picture>
-						<source media="(width < 500px)" srcset="${ blockData.image.small.src_2x }">
-						<source media="(width < 1000px)" srcset="${ blockData.image.medium.src_2x }">
-						<img alt="${blockData.image.alt_text}" src="${ blockData.image.large.src_2x }">
-					</picture>
-					<figcaption>
-						<h3><a href="${ blockData.source.url }">${ blockData.title }</a></h3>
-					</figcaption>
-				</figure>
-			</li>
+			<li class="align alignright">
+            <button class="modal-button">
+                <picture>
+                    <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+                    <source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+                    <img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+                </picture>
+            </button>
+
+            <dialog class="modal-dialog">
+                ${blockData.title ? `<h2>${blockData.title}</h2>` : ''}
+                
+                <h3><a href="${blockData.source.url}" target="_blank">visit Link</a></h3>
+
+       
+
+                <button class="close-button">Close</button>
+            </dialog>
+        </li>
+
 			`
 
 		// And puts it into the page!
@@ -79,7 +87,7 @@ let renderBlock = (blockData) => {
 			<li> 
 				<button class="modal-button">${'read'}</button>
 				<dialog class="modal-dialog">
-					<h3>${blockData.title || 'Text Block'}</h3>
+					<h2>${blockData.title || 'Text Block'}</h2>
 					<p class="modal-content">${blockData.content.html}</p>
 					<button class="close-button">Close</button>
 				</dialog>
@@ -112,9 +120,9 @@ let renderBlock = (blockData) => {
 								${blockData.embed.html}
 							</div>
 
-							<div class="description">
+							<p class="description">
 								${blockData.description ? blockData.description.html : ''}
-							</div>
+							</p>
 
 							<button class="close-button">Close</button>
 						</dialog>
@@ -145,9 +153,9 @@ let renderBlock = (blockData) => {
 						src="${ blockData.attachment.url }"
 						title="${ blockData.title}">
 					</iframe>
-					 <div class="description">
+					 <p class="description">
                                 ${blockData.description ? blockData.description.html : ''}
-                            </div>
+                            </p>
 
                             <button class="close-button">Close</button>
                     </dialog>
@@ -175,12 +183,11 @@ let renderBlock = (blockData) => {
                         <div class="audiowrapper">
                              <audio controls src="${ blockData.attachment.url }"></audio>
                         </div>
-
-                            <div class="description">
+						<p class="description">
                                 ${blockData.description ? blockData.description.html : ''}
-                            </div>
+                        </p>
 
-                            <button class="close-button">Close</button>
+                        <button class="close-button">Close</button>
                         </dialog>
                     </li>
                 `           
@@ -215,9 +222,9 @@ let renderBlock = (blockData) => {
 								${blockData.embed.html}
 							</div>
 
-							<div class="description">
+							<p class="description">
 								${blockData.description ? blockData.description.html : ''}
-							</div>
+							</p>
 
 							<button class="close-button">Close</button>
 						</dialog>

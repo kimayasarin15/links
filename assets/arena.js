@@ -76,11 +76,11 @@ let renderBlock = (blockData) => {
 		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'read more'
 		
 		let textItem = `
-			<li class="block-item"> 
-				<button class="modal-button">${blockData.title || 'read more'}</button>
+			<li> 
+				<button class="modal-button">${'read'}</button>
 				<dialog class="modal-dialog">
 					<h3>${blockData.title || 'Text Block'}</h3>
-					<div class="modal-content">${blockData.content.html}</div>
+					<p class="modal-content">${blockData.content.html}</p>
 					<button class="close-button">Close</button>
 				</dialog>
 			</li>
@@ -98,11 +98,28 @@ let renderBlock = (blockData) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
-					<p><em>Video</em></p>
-					<video controls src="${ blockData.attachment.url }"></video>
-				</li>
-				`
+					<li>
+						<button class="modal-button">
+							<div class="thumbnail-container">
+								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
+							</div>
+						</button>
+
+						<dialog class="modal-dialog">
+							<h2>${blockData.title}</h2>
+
+							<div class="videowrapper">
+								${blockData.embed.html}
+							</div>
+
+							<div class="description">
+								${blockData.description ? blockData.description.html : ''}
+							</div>
+
+							<button class="close-button">Close</button>
+						</dialog>
+					</li>
+				`			
 
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
 
@@ -116,11 +133,25 @@ let renderBlock = (blockData) => {
 			let pdfItem =
 				   `
         		<li>
+				   <button class="modal-button">
+                            <div class="thumbnail-container">
+                                <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
+                            </div>
+                    </button>
+
+					   <dialog class="modal-dialog">
+                            <h2>${blockData.title}</h2>
 					<iframe
 						src="${ blockData.attachment.url }"
-						title="${ blockData.title}"
-					>
+						title="${ blockData.title}">
 					</iframe>
+					 <div class="description">
+                                ${blockData.description ? blockData.description.html : ''}
+                            </div>
+
+                            <button class="close-button">Close</button>
+                    </dialog>
+
         		</li>
        			 `
 			channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
@@ -129,17 +160,31 @@ let renderBlock = (blockData) => {
 		// Uploaded audio!
 		else if (contentType.includes('audio')) {
 			// …still up to you, but here’s an `audio` element:
-			let audioItem =
-				`
-				<li class="align alignleft">
-					<div class="audiowrapper">
-						<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
-						<audio controls src="${ blockData.attachment.url }"></audio>
-					</div>
-				</li>
-				`
+			  let audioItem =
+                `
+                    <li class="align alignright">
+                        <button class="modal-button">
+                            <div class="thumbnail-container">
+                                <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
+                            </div>
+                        </button>
 
-    		channelBlocks.insertAdjacentHTML('beforeend', audioItem)
+                        <dialog class="modal-dialog">
+                            <h2>${blockData.title}</h2>
+
+                        <div class="audiowrapper">
+                             <audio controls src="${ blockData.attachment.url }"></audio>
+                        </div>
+
+                            <div class="description">
+                                ${blockData.description ? blockData.description.html : ''}
+                            </div>
+
+                            <button class="close-button">Close</button>
+                        </dialog>
+                    </li>
+                `           
+                channelBlocks.insertAdjacentHTML('beforeend', audioItem)
 
 			// More on`audio`:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -161,7 +206,6 @@ let renderBlock = (blockData) => {
 							<div class="thumbnail-container">
 								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
 							</div>
-							<p><em>${blockData.title || 'Video'}</em></p>
 						</button>
 
 						<dialog class="modal-dialog">

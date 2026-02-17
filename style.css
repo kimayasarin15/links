@@ -56,6 +56,7 @@ body {
     gap: var(--spaceS);
     filter: invert(1);
     mix-blend-mode: multiply;
+    cursor: pointer;
     /* opacity: 0.2;
     transition: all 0.5s ease-in-out; */
 
@@ -77,6 +78,8 @@ body {
 
     &.scrollhighlight {
         opacity: 1;  
+        filter: none;
+        mix-blend-mode: none;
     }
     
 }
@@ -268,6 +271,8 @@ dialog {
 	inset-inline-start: 50%;
 	position: fixed; 
 	translate: -50% -50%;
+    width: 50vw;
+    height: 50vh;
 
     @media(width <600px){
         width: 90vw;
@@ -285,7 +290,7 @@ dialog {
     }
 
     &::backdrop {
-		background-color: rgb(0 0 0 / 40%);
+		background-color: rgb(0 0 0 / 90%);
 		pointer-events: none; 
 	}
 
@@ -342,6 +347,8 @@ figure {
     display: block;
     margin-block: 0;
     margin-inline: auto;
+    aspect-ratio: 16 / 9;
+    display: block;
 }
 
 .audiowrapper {

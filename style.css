@@ -77,8 +77,7 @@ body {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
 
-    &.scrollhighlight {
-        opacity: 1;  
+    &.scrollhighlight {  
         filter: none;
         mix-blend-mode: none;
     }

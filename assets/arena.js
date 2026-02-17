@@ -32,7 +32,7 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-			<li class="align"> 
+			<li class="align alignright"> 
 				<figure class="linkblock" >
 					<picture>
 						<source media="(width < 500px)" srcset="${ blockData.image.small.src_2x }">
@@ -131,8 +131,9 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li class="align">
+				<li class="align alignleft">
 					<div class="audiowrapper">
+						<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
 						<audio controls src="${ blockData.attachment.url }"></audio>
 					</div>
 				</li>
@@ -216,7 +217,6 @@ let renderUser = (userData) => {
 
 	channelUsers.insertAdjacentHTML('beforeend', userAddress)
 }
-
 
 
 // Finally, a helper function to fetch data from the API, then run a callback function with it:

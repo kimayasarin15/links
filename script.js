@@ -16,22 +16,23 @@ clickButton.addEventListener('click', () => {
 // I know we didn't go over it in classtime but I was reading the js page and wanted to experiement 
 // I altered the opacity to change as you scroll I'm not sure I want to do this yet but I wanted to try it out to practice JS
 
-let highlightScroll = 'scrollhighlight'
-let blockScroll = document.querySelectorAll('ul')
+// let highlightScroll = 'scrollhighlight'
+// let blockScroll = document.querySelectorAll('ul')
 
 
-blockScroll.forEach((block) => {
-let sectionObserver = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-        block.classList.add(highlightScroll)
-    } else {
-        block.classList.remove(highlightScroll)
-    }
-}, {
-    rootMargin: '-25% 0% -25% 0%',
-})
-sectionObserver.observe(block)
-})
+// blockScroll.forEach((block) => {
+// let sectionObserver = new IntersectionObserver(([entry]) => {
+//     if (entry.isIntersecting) {
+//         block.classList.add(highlightScroll)
+//     } else {
+//         block.classList.remove(highlightScroll)
+//     }
+// }, {
+//     rootMargin: '-25% 0% -25% 0%',
+// })
+// sectionObserver.observe(block)
+// })
+
 
 
 // Trying out using modal from the class example 

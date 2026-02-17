@@ -54,6 +54,10 @@ body {
     /* had problems with 1fr so Michael explained it to me on slack and I used minmax  */
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
     gap: var(--spaceS);
+    filter: invert(1);
+    mix-blend-mode: multiply;
+    /* opacity: 0.2;
+    transition: all 0.5s ease-in-out; */
 
     p{
         padding-block: var(--spaceS);
@@ -68,9 +72,7 @@ body {
     }
 
     @media (width <500px){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
 
     &.scrollhighlight {
@@ -140,6 +142,7 @@ h3 {
     top: 50%;
     font-size: calc(var(--textL)*2.5);
     mix-blend-mode: multiply;
+    pointer-events: none;
 
     @media (width <900px){
         font-size: var(--textL); 
@@ -218,9 +221,17 @@ footer section {
 .align {
     align-self: end;
     width: 100%;
+    
     /* added with: 100% so the audio takes up the whole width on mobile */
 }
 
+.alignleft {
+    rotate: 150deg;
+}
+
+.alignright {
+    rotate: 45deg;
+}
 .hover:hover {
     transform: scale(1.05);
 

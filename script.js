@@ -25,6 +25,7 @@ hide.addEventListener('click', () => {
 
 
 
+
 // I copied this from the class website and updated to match my variables
 // I know we didn't go over it in classtime but I was reading the js page and wanted to experiement 
 // I altered the opacity to change as you scroll I'm not sure I want to do this yet but I wanted to try it out to practice JS

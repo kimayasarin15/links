@@ -64,7 +64,7 @@ let renderBlock = (blockData) => {
         `
           <li class="hover align2">
             <figure>
-                <picture>
+                <picture class="image">
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
                     <source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
                     <img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">

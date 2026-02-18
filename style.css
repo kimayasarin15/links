@@ -436,3 +436,12 @@ audio {
         font-size: calc(var(--textS) * 0.9);
     }
 }
+
+
+/* come back to this */
+/* .image {
+    display: block;
+    &.click {
+        transform: scale(2);
+    }
+} */

@@ -134,14 +134,18 @@ section {
 
 h1 {
 
-    font-size: var(--textL);
+    font-size: calc(var(--textL)*2);
     font-family: var(--font-family2);
     text-align: center;
     cursor: pointer;
     padding-block-end: var(--spaceL);
     line-height: var(--lineheight);
-    animation: blinking 1s ease-in-out;
-    
+    animation: blinking 1s steps(1);
+
+    @media (width < 600px) {
+        font-size: var(--textL);
+    }    
+
     &.highlight {
         background-color: var(--brat);
         transform: scale(1.2);
@@ -157,23 +161,37 @@ h1 {
 /* looked at the class website to add some animation to the title - not sure about this yet */
 @keyframes blinking {
 	0% {
-		opacity: 1;
+        color: var(--dark);
 	}
-
-    25% {
-        opacity: 0;
+    10% {
+        color: var(--brat);
     }
-
+    20% {
+        color: var(--dark);
+    }
+    30% {
+        color: var(--brat);
+    }
+    40% {
+        color: var(--dark);
+    }
 	50% {
-		opacity: 1;
+        color: var(--brat);
 	}
-
-    75% {
-        opacity: 0;
+    60% {
+        color: var(--dark);
     }
-
+    70% {
+        color: var(--brat);
+    }
+    80% {
+        color: var(--dark);
+    }
+    90% {
+        color: var(--brat);
+    }
 	100% {
-		opacity: 1;
+        color: var(--dark);
 	}
 }
 
@@ -267,9 +285,10 @@ footer {
     gap: var(--spaceM);
     padding-inline: var(--spaceL);
 
-    h3, p {
+    p {
         text-align: center;
         font-family: var(--font-family2);
+        font-size: var(--textM);
         color: var(--dark); 
         padding: var(--spaceS);  
 
@@ -366,13 +385,8 @@ button {
 }
 
 
-
-
-
-
-
 iframe {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
     aspect-ratio: 9 / 16;
     display: block;
@@ -385,12 +399,12 @@ figure {
 
 
 .videowrapper {
-    max-width: 100%;
+    max-width: 90%;
     overflow: hidden;
 }
 
 .videowrapper iframe {
-    max-width: 100%;
+    max-width: 90%;
     display: block;
     margin-block: 0;
     margin-inline: auto;
@@ -415,3 +429,10 @@ audio {
 	inline-size: 100%;
 }
 
+
+@media (width < 600px) {
+    dialog.modal-dialog {        
+        padding: var(--spaceS);
+        font-size: calc(var(--textS) * 0.9);
+    }
+}

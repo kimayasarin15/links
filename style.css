@@ -119,17 +119,14 @@ body {
 
 .togglebuttons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: var(--spaceS);
     position: sticky;
     top: 0;
-    background-color: var(--light);
+    /* I took this from Trenton and I's spread project - how to blur the background */
+    background-color: color-mix(in srgb, var(--light), transparent 70%);
+    backdrop-filter: blur(1.5rem); 
     z-index: 2;
-}
-
-
-section {
- min-inline-size: 0;
 }
 
 h1 {
@@ -158,7 +155,7 @@ h1 {
     }
 }
 
-/* looked at the class website to add some animation to the title - not sure about this yet */
+/* looked at the class website to add some animation to the title - not sure about this yet but wanted to try it out */
 @keyframes blinking {
 	0% {
         color: var(--dark);
@@ -203,25 +200,22 @@ h2 {
     color: var(--brat);
     margin: var(--spaceS);
 
-    /* @media (width <600px){
-        font-size: var(--textS);
-        
-    } */
+    @media (width <600px){
+        font-size: calc(var(--textS)*0.8);    
+    }
 }
 
 h3 {
     font-size: var(--textS);
     font-family: var(--font-family);
     color: var(--dark);
-    padding: var(--spaceS);
-    
+    padding: var(--spaceS);    
 }
 
 p {
     font-size: var(--textS);
     font-family: var(--font-family2);
     color: var(--dark);
-
 }
 
 #channel-slug {
@@ -236,7 +230,6 @@ p {
         font-size: var(--textL); 
     }
 
-
 }
 
 #channel-link {
@@ -245,6 +238,7 @@ p {
     text-decoration: underline;
     margin: var(--spaceS);
 }
+
 /* come back to this */
 /* #background {
     font-size: calc(var(--textL)*3);
@@ -293,15 +287,14 @@ footer {
         padding: var(--spaceS);  
 
     a{
-            color: var(--brat);
-            background-color: var(--dark);
+        color: var(--brat);
+        background-color: var(--dark);
         }
     }
 
     @media (width <500px ){
         flex-direction: column;
     }
-
 
 }
 
@@ -310,19 +303,18 @@ footer {
 /* Align-self allows me to isolate some of the grid items I found this on MDN https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-self I wanted to create a more flexible and loose grid system by aligning some of the elements to the bottom of the grid */
 .align {
     align-self: end;
-    width: 100%;
-    
+    width: 100%;  
     /* added with: 100% so the audio takes up the whole width on mobile */
 }
 
-
-.hover:hover {
+/* I removed this for now as i'm not sure I want to do it yet and it gives an affordance of clicking  */
+/* .hover:hover {
     transform: scale(1.05);
 
     @media (width < 600px) {
         transform: none; 
     }
-}
+} */
 
 
 /* testing out using modal from the class website */
@@ -362,6 +354,7 @@ dialog {
         font-family: var(--font-family2);
         font-size: var(--textS);
         padding: calc(var(--spaceS)*0.2);
+        border-radius: 10%;
 
     }
 
@@ -408,7 +401,6 @@ figure {
     display: block;
     margin-block: 0;
     margin-inline: auto;
-    /* aspect-ratio: 16 / 9; */
     block-size: revert;
 	inline-size: 100%;
    
@@ -419,7 +411,7 @@ figure {
     padding: var(--spaceS);
     background-color: var(--dark);
     @media (width <600px){
-     width: 80%;
+        width: 80%;
         
     }
 }

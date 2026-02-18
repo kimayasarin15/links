@@ -1,16 +1,16 @@
 
 
-// Another test to try out JS 
-let highlightClass = 'highlight'
-let text = document.querySelector('h1')
-let clickButton = document.querySelector('#click')
+// Another test to try out JS - not ussing this now 
+// let highlightClass = 'highlight'
+// let text = document.querySelector('h1')
+// let clickButton = document.querySelector('#click')
 
-clickButton.addEventListener('click', () => {
-    text.classList.toggle(highlightClass)
-})
+// clickButton.addEventListener('click', () => {
+//     text.classList.toggle(highlightClass)
+// })
 
 
-
+// this is for my channel blocks to switch between reveal and hide 
 let reveal = document.querySelector('#revealbutton');
 let hide = document.querySelector('#hidebutton');
 let channelBlocks = document.querySelector('#channel-blocks');
@@ -47,8 +47,7 @@ hide.addEventListener('click', () => {
 // })
 
 
-// this is my modal js for my header button
-
+// this is my modal js for my header button - I re wrote it because the one below was only looking in channel blocks and this was in my header but will look into seeing if theres a way to combine them
 
 let modalButton = document.querySelector('.modal-button')
 let modalDialog = document.querySelector('header dialog')
@@ -87,7 +86,7 @@ document.querySelector('#channel-blocks').addEventListener('click', (event) => {
     }
 });
 
-// this is saying if the user clicks outside the dialog button the modal should close
+// this is saying if the user clicks outside the dialog button the modal should close - but it isnt working need to come back to this 
 document.addEventListener('click', (event) => {
     if (event.target.tagName === 'DIALOG') {
         event.target.close();

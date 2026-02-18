@@ -9,6 +9,7 @@ let placeChannelInfo = (channelData) => {
 	let channelTitle = document.querySelector('#channel-title')
 	let channelDescription = document.querySelector('#channel-description')
 	// let channelCount = document.querySelector('#channel-count')
+	// I was getting some console errors because I wasn't using this so I commented it out for now
 	let channelLink = document.querySelector('#channel-link')
     let channelSlug = document.querySelector('#channel-slug')
 
@@ -72,6 +73,7 @@ let renderBlock = (blockData) => {
         </li>
     `
         channelBlocks.insertAdjacentHTML('beforeend', imageItem)
+		// I left the images as they are for now but I may add modals or some other interaction later
 	}
 
 	// Text!
@@ -104,9 +106,11 @@ let renderBlock = (blockData) => {
 				`
 					<li class="align1">
 						<button class="modal-button">
-							<div class="thumbnail-container">
-								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
-							</div>
+							<picture>
+                    			<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+                    			<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+                    			<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+                			</picture>
 						</button>
 						<dialog class="modal-dialog">
 							<h2>${blockData.title}</h2>
@@ -132,16 +136,17 @@ let renderBlock = (blockData) => {
 				   `
         		<li class="align2">
 				   <button class="modal-button">
-                            <div class="thumbnail-container">
-                                <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
-                            </div>
+						<picture>
+							<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+							<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+							<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+						</picture>
                     </button>
 					   <dialog class="modal-dialog">
                             <h2>${blockData.title}</h2>
-					<iframe
-						src="${ blockData.attachment.url }"
-						title="${ blockData.title}">
-					</iframe>
+						<iframe
+							src="${ blockData.attachment.url }"
+						></iframe>
 					 <p class="description">${blockData.description ? blockData.description.html : ''} </p>
 					<button class="close-button">Close</button>
                     </dialog>
@@ -158,9 +163,11 @@ let renderBlock = (blockData) => {
                 `
                     <li class="align align3">
                         <button class="modal-button">
-                            <div class="thumbnail-container">
-                                <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
-                            </div>
+                            <picture>
+								<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+								<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+								<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+							</picture>
                         </button>
                         <dialog class="modal-dialog">
                             <h2>${blockData.title}</h2>
@@ -191,9 +198,11 @@ let renderBlock = (blockData) => {
 			let linkedVideoItem = `
 					<li class="align1">
 						<button class="modal-button">
-							<div class="thumbnail-container">
-								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
-							</div>
+							<picture>
+								<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+								<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+								<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+							</picture>
 						</button>
 						<dialog class="modal-dialog">
 							<h2>${blockData.title}</h2>
@@ -221,6 +230,7 @@ let renderBlock = (blockData) => {
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioitem)
+			// I left my embdeds without modals as I like the look of the spotify tabs it feels on theme
 
 		}
 	}

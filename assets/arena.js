@@ -44,7 +44,7 @@ let renderBlock = (blockData) => {
 
             <dialog class="modal-dialog">
                 ${blockData.title ? `<h2>${blockData.title}</h2>` : ''}             
-                <p><a href="${blockData.source.url}" target="_blank">visit Link</a></p>
+                <p><a href="${blockData.source.url}" target="_blank">visit link</a></p>
                 <button class="close-button">Close</button>
             </dialog>
         </li>

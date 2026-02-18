@@ -8,14 +8,14 @@ let placeChannelInfo = (channelData) => {
 	// Target some elements in your HTML:
 	let channelTitle = document.querySelector('#channel-title')
 	let channelDescription = document.querySelector('#channel-description')
-	let channelCount = document.querySelector('#channel-count')
+	// let channelCount = document.querySelector('#channel-count')
 	let channelLink = document.querySelector('#channel-link')
     let channelSlug = document.querySelector('#channel-slug')
 
 	// Then set their content/attributes to our data:
 	channelTitle.innerHTML = channelData.title
 	channelDescription.innerHTML = channelData.description.html
-	channelCount.innerHTML = channelData.counts.blocks
+	// channelCount.innerHTML = channelData.counts.blocks
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
     channelSlug.innerHTML = channelData.slug
 }
@@ -32,7 +32,7 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-			<li class="align alignright">
+			<li class="align align1">
             <button class="modal-button">
                 <picture>
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -65,7 +65,7 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Image') {
 		let imageItem = 
         `
-          <li class="hover">
+          <li class="hover align2">
             <figure>
                 <picture>
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -84,7 +84,7 @@ let renderBlock = (blockData) => {
 		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'read more'
 		
 		let textItem = `
-			<li> 
+			<li class="align3"> 
 				<button class="modal-button">${'read'}</button>
 				<dialog class="modal-dialog">
 					<h2>${blockData.title || 'Text Block'}</h2>
@@ -106,7 +106,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-					<li>
+					<li class="align1">
 						<button class="modal-button">
 							<div class="thumbnail-container">
 								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
@@ -115,11 +115,9 @@ let renderBlock = (blockData) => {
 
 						<dialog class="modal-dialog">
 							<h2>${blockData.title}</h2>
-
-							<div class="videowrapper">
-								${blockData.embed.html}
-							</div>
-
+						<div class="videowrapper">
+							<video controls src="${blockData.attachment.url}"></video>
+						</div>
 							<p class="description">
 								${blockData.description ? blockData.description.html : ''}
 							</p>
@@ -140,7 +138,7 @@ let renderBlock = (blockData) => {
 			// …up to you!
 			let pdfItem =
 				   `
-        		<li>
+        		<li class="align2">
 				   <button class="modal-button">
                             <div class="thumbnail-container">
                                 <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
@@ -170,7 +168,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an `audio` element:
 			  let audioItem =
                 `
-                    <li class="align alignright">
+                    <li class="align align3">
                         <button class="modal-button">
                             <div class="thumbnail-container">
                                 <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
@@ -208,7 +206,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an example `iframe` element:
 			// Claude helped me this this up to fit the format of my modals but I can't get the js to work. The model button shows the thumbnail image and the video title. When open it shows the title, emdeded content, description and close button. I wanted to use thumnail images for my videos as it was taking up too much space on the page.
 			let linkedVideoItem = `
-					<li class="block-item">
+					<li class="align1">
 						<button class="modal-button">
 							<div class="thumbnail-container">
 								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
@@ -240,8 +238,7 @@ let renderBlock = (blockData) => {
 			// …up to you!
 			let linkedAudioitem =
 				`
-				<li>
-					<!-- <p><em>Linked Audio</em></p> -->
+				<li class="align2"
 					${ blockData.embed.html }
 				</li>
 				`
@@ -324,5 +321,6 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 		renderBlock(blockData) // Pass the single block’s data to the render function.
 	})
 })
+
 
 

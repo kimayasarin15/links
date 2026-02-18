@@ -49,17 +49,15 @@ body {
     }
 }
 
+
 #channel-blocks {
     padding: var(--spaceL);
     display: grid;
     /* had problems with 1fr so Michael explained it to me on slack and I used minmax  */
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
     gap: var(--spaceS);
-    filter: invert(1);
-    mix-blend-mode: multiply;
-    cursor: pointer;
-    /* opacity: 0.2;
-    transition: all 0.5s ease-in-out; */
+    overflow-x: hidden;
+  
 
     p{
         padding-block: var(--spaceS);
@@ -77,33 +75,62 @@ body {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
 
-    &.scrollhighlight {  
-        filter: none;
-        mix-blend-mode: none;
+    &.reveal {
+        li {
+            mix-blend-mode: normal;
+            transform: scale(1);
+            align-self: center; 
+            filter: invert(0); 
+
+            &.align1 {
+                rotate: 0deg;
+            }
+
+            &.align2 {
+                rotate: 0deg;
+            }
+
+            &.align3 {
+                rotate: 0deg;
+            }
+        }
+    }
+
+    li {
+        filter: invert(1);       
+        mix-blend-mode: multiply; 
+        cursor: pointer;  
+
+        &.align1 {
+            rotate: 150deg;
+        }
+
+        &.align2{
+            rotate: 40deg;
+        }
+
+        &.align3 {
+            rotate: 85deg;
+        }
     }
     
+}   
+
+
+.togglebuttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spaceS);
+    position: sticky;
+    top: 0;
+    background-color: var(--light);
+    z-index: 2;
 }
+
 
 section {
  min-inline-size: 0;
 }
-
-/* come back to this  */
-/* li {
-    padding-block: var(--spaceL);
-    opacity: 0.2;
-    transition: all 0.5s ease-in-out;
-
-    &.scrollhighlight {
-        opacity: 1;  
-    }
-
-
-    @media (width <600px ){
-        padding-block: var(--spaceS);
-    }
-
-} */
 
 h1 {
 
@@ -133,9 +160,17 @@ h1 {
 		opacity: 1;
 	}
 
+    25% {
+        opacity: 0;
+    }
+
 	50% {
-		opacity: 0;
+		opacity: 1;
 	}
+
+    75% {
+        opacity: 0;
+    }
 
 	100% {
 		opacity: 1;
@@ -177,6 +212,7 @@ p {
     font-size: calc(var(--textL)*2.5);
     mix-blend-mode: multiply;
     pointer-events: none;
+    z-index: 1;
 
     @media (width <900px){
         font-size: var(--textL); 
@@ -218,6 +254,9 @@ header {
     h2 {
         padding-block-start: var(--spaceL);
     }
+    p {
+        padding-block-start: var(--spaceM);
+    }
 }
 
 footer {
@@ -249,12 +288,6 @@ footer {
 
 
 
-/* main section {
-    background-color: var(--brat);
-    margin: var(--spaceM);
-} */
-
-
 /* Align-self allows me to isolate some of the grid items I found this on MDN https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-self I wanted to create a more flexible and loose grid system by aligning some of the elements to the bottom of the grid */
 .align {
     align-self: end;
@@ -263,13 +296,7 @@ footer {
     /* added with: 100% so the audio takes up the whole width on mobile */
 }
 
-.alignleft {
-    rotate: 150deg;
-}
 
-.alignright {
-    rotate: 45deg;
-}
 .hover:hover {
     transform: scale(1.05);
 
@@ -295,7 +322,7 @@ dialog {
 	position: fixed; 
 	translate: -50% -50%;
     width:50vw;
-    height: 50vh;
+    height: auto;
     max-width: 90vw;
     max-height: 90vh;
     overflow-y: auto;
@@ -316,6 +343,7 @@ dialog {
         font-family: var(--font-family2);
         font-size: var(--textS);
         padding: calc(var(--spaceS)*0.2);
+
     }
 
     &::backdrop {
@@ -339,18 +367,7 @@ button {
 
 
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
 
-
-video {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
 
 
 
@@ -377,8 +394,10 @@ figure {
     display: block;
     margin-block: 0;
     margin-inline: auto;
-    aspect-ratio: 16 / 9;
-    display: block;
+    /* aspect-ratio: 16 / 9; */
+    block-size: revert;
+	inline-size: 100%;
+   
 }
 
 .audiowrapper {

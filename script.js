@@ -11,32 +11,43 @@ clickButton.addEventListener('click', () => {
 
 
 
+let reveal = document.querySelector('#revealbutton');
+let hide = document.querySelector('#hidebutton');
+let channelBlocks = document.querySelector('#channel-blocks');
+
+reveal.addEventListener('click', () => {
+    channelBlocks.classList.add('reveal');
+});
+
+hide.addEventListener('click', () => {
+    channelBlocks.classList.remove('reveal');
+});
+
+
 
 // I copied this from the class website and updated to match my variables
 // I know we didn't go over it in classtime but I was reading the js page and wanted to experiement 
 // I altered the opacity to change as you scroll I'm not sure I want to do this yet but I wanted to try it out to practice JS
 
-let highlightScroll = 'scrollhighlight'
-let blockScroll = document.querySelectorAll('#channel-blocks li')
+// let highlightScroll = '.scrollhighlight'
+// let blockScroll = document.querySelectorAll('#channel-blocks li')
 
 
-blockScroll.forEach((block) => {
-let sectionObserver = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-        block.classList.add(highlightScroll)
-    } else {
-        block.classList.remove(highlightScroll)
-    }
-}, {
-    rootMargin: '-25% 0% -25% 0%',
-})
-sectionObserver.observe(block)
-})
+// blockScroll.forEach((block) => {
+// let sectionObserver = new IntersectionObserver(([entry]) => {
+//     if (entry.isIntersecting) {
+//         block.classList.add(highlightScroll)
+//     } else {
+//         block.classList.remove(highlightScroll)
+//     }
+// }, {
+//     rootMargin: '-25% 0% -25% 0%',
+// })
+// sectionObserver.observe(block)
+// })
 
 
-
-// Trying out using modal from the class example 
-// This works for my first button but I need to make it work for all - tried with loops but wasn't working will come back to this
+// this is my modal js for my header button
 
 
 let modalButton = document.querySelector('.modal-button')

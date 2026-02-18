@@ -42,12 +42,8 @@ let renderBlock = (blockData) => {
             </button>
 
             <dialog class="modal-dialog">
-                ${blockData.title ? `<h2>${blockData.title}</h2>` : ''}
-                
-                <h3><a href="${blockData.source.url}" target="_blank">visit Link</a></h3>
-
-       
-
+                ${blockData.title ? `<h2>${blockData.title}</h2>` : ''}             
+                <p><a href="${blockData.source.url}" target="_blank">visit Link</a></p>
                 <button class="close-button">Close</button>
             </dialog>
         </li>
@@ -112,16 +108,12 @@ let renderBlock = (blockData) => {
 								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
 							</div>
 						</button>
-
 						<dialog class="modal-dialog">
 							<h2>${blockData.title}</h2>
 						<div class="videowrapper">
 							<video controls src="${blockData.attachment.url}"></video>
 						</div>
-							<p class="description">
-								${blockData.description ? blockData.description.html : ''}
-							</p>
-
+							<p class="description">${blockData.description ? blockData.description.html : ''}</p>
 							<button class="close-button">Close</button>
 						</dialog>
 					</li>
@@ -144,18 +136,14 @@ let renderBlock = (blockData) => {
                                 <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
                             </div>
                     </button>
-
 					   <dialog class="modal-dialog">
                             <h2>${blockData.title}</h2>
 					<iframe
 						src="${ blockData.attachment.url }"
 						title="${ blockData.title}">
 					</iframe>
-					 <p class="description">
-                                ${blockData.description ? blockData.description.html : ''}
-                            </p>
-
-                            <button class="close-button">Close</button>
+					 <p class="description">${blockData.description ? blockData.description.html : ''} </p>
+					<button class="close-button">Close</button>
                     </dialog>
 
         		</li>
@@ -174,17 +162,12 @@ let renderBlock = (blockData) => {
                                 <img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
                             </div>
                         </button>
-
                         <dialog class="modal-dialog">
                             <h2>${blockData.title}</h2>
-
                         <div class="audiowrapper">
                              <audio controls src="${ blockData.attachment.url }"></audio>
                         </div>
-						<p class="description">
-                                ${blockData.description ? blockData.description.html : ''}
-                        </p>
-
+						<p class="description">${blockData.description ? blockData.description.html : ''}</p>
                         <button class="close-button">Close</button>
                         </dialog>
                     </li>
@@ -212,18 +195,12 @@ let renderBlock = (blockData) => {
 								<img src="${blockData.image.medium.src}" alt="${blockData.title}" class="thumbnail">
 							</div>
 						</button>
-
 						<dialog class="modal-dialog">
 							<h2>${blockData.title}</h2>
-
 							<div class="videowrapper">
 								${blockData.embed.html}
 							</div>
-
-							<p class="description">
-								${blockData.description ? blockData.description.html : ''}
-							</p>
-
+							<p class="description">${blockData.description ? blockData.description.html : ''}</p>
 							<button class="close-button">Close</button>
 						</dialog>
 					</li>
@@ -238,12 +215,13 @@ let renderBlock = (blockData) => {
 			// …up to you!
 			let linkedAudioitem =
 				`
-				<li class="align2"
+				<li class="align2">
 					${ blockData.embed.html }
 				</li>
 				`
 
 			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioitem)
+
 		}
 	}
 }

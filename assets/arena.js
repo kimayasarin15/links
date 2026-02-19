@@ -88,7 +88,7 @@ let renderBlock = (blockData) => {
 		
 		let textItem = `
 			<li class="align3"> 
-				<button class="modal-button">${'read'}</button>
+				<button class="modal-button read-button">${'read'}</button>
 				<dialog class="modal-dialog">
 				  	<section class="topbar">
 						<h2 class="modal-title">${blockData.title || 'read'}</h2>
@@ -251,7 +251,9 @@ let renderBlock = (blockData) => {
 			let linkedAudioitem =
 				`
 				<li class="align2">
-					${ blockData.embed.html }
+					<div class="embed-wrapper">
+						${ blockData.embed.html }
+					</div>
 				</li>
 				`
 

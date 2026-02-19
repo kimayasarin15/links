@@ -87,7 +87,7 @@ document.querySelector('#channel-blocks').addEventListener('click', (event) => {
     }
 });
 
-// this is saying if the user clicks outside the dialog button the modal should close - but it isnt working need to come back to this 
+// this is saying if the user clicks outside the dialog button the modal should close 
 document.addEventListener('click', (event) => {
     if (event.target.tagName === 'DIALOG') {
         event.target.close();

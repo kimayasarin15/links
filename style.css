@@ -76,11 +76,26 @@ body {
     }
 
     &.reveal {
+        grid-template-columns:  minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+
+        @media (width < 950px) {
+            grid-template-columns: minmax(0, 1fr),minmax(0, 1fr),minmax(0, 1fr);
+        }
+
+        @media (width < 700px) {
+            grid-template-columns: minmax(0, 1fr),minmax(0, 1fr);
+        }
+
+        @media (width <500px){
+        grid-template-columns: minmax(0, 1fr);
+        }
+
         li {
             mix-blend-mode: normal;
             transform: scale(1);
             align-self: center; 
             filter: invert(0); 
+
 
             &.align1 {
                 rotate: 0deg;
@@ -247,20 +262,7 @@ p {
     margin: var(--spaceS);
 }
 
-/* come back to this */
-/* #background {
-    font-size: calc(var(--textL)*3);
-    mix-blend-mode: multiply;
-    z-index: -1;
-    position: absolute;
-    opacity: 0.3;
-    line-height: 90%;
-}
 
-#foreground {
-    z-index: 1;
-    position: relative;
-} */
 
 header {
     padding: var(--spaceL);
@@ -315,14 +317,6 @@ footer {
     /* added with: 100% so the audio takes up the whole width on mobile */
 }
 
-/* I removed this for now as i'm not sure I want to do it yet and it gives an affordance of clicking  */
-/* .hover:hover {
-    transform: scale(1.05);
-
-    @media (width < 600px) {
-        transform: none; 
-    }
-} */
 
 
 /* testing out using modal from the class website */
@@ -437,6 +431,11 @@ button {
     width: 100%;
 }
 
+.read-button {
+    display: block;
+    margin-inline: auto;
+}
+
 iframe {
     max-width: 90%;
     height: auto;
@@ -488,12 +487,27 @@ audio {
 	inline-size: 100%;
 }
 
+.embed-wrapper {
+    justify-content: center;
+    display: flex;
+
+}
 
 @media (width < 600px) {
     dialog.modal-dialog {        
         padding: var(--spaceS);
         font-size: calc(var(--textS) * 0.9);
     }
+
+    .arena-button, .visit-button, .close-button, .modal-title {
+        font-size: (var(--textS));
+    }
+
+    .arena-button, .visit-button, .close-button {
+        padding: calc(var(--spaceS)*0.5);
+    }
+
+
 }
 
 

@@ -67,10 +67,10 @@ toggleButton.addEventListener('click', () => {
 // })
 
 
-// this is my modal js for my header button - I re wrote it because the one below was only looking in channel blocks and this was in my header but will look into seeing if theres a way to combine them
+// this is my modal js for my main button - I re wrote it because the one below was only looking in channel blocks and this isn't in CB but will look into seeing if theres a way to combine them
 
 let modalButton = document.querySelector('.modal-button')
-let modalDialog = document.querySelector('header dialog')
+let modalDialog = document.querySelector('main dialog')
 let closeButton = modalDialog.querySelector('.close-button')
 
 modalButton.addEventListener('click', () => {

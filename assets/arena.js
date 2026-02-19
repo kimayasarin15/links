@@ -91,7 +91,7 @@ let renderBlock = (blockData) => {
 				<button class="modal-button">${'read'}</button>
 				<dialog class="modal-dialog">
 				  	<section class="topbar">
-						<h2>${blockData.title || 'read'}</h2>
+						<h2 class="modal-title">${blockData.title || 'read'}</h2>
 						<button class="close-button">✕</button>
                 	</section>
 					<p class="modal-content">${blockData.content.html}</p>
@@ -123,11 +123,16 @@ let renderBlock = (blockData) => {
                 			</picture>
 						</button>
 						<dialog class="modal-dialog">
-							<h2>${blockData.title}</h2>
-						<div class="videowrapper">
-							<video controls src="${blockData.attachment.url}"></video>
-						</div>
-							<button class="close-button">Close</button>
+							<section class="topbar">
+								<h2 class="modal-title">${blockData.title}</h2>
+								<button class="close-button">✕</button>
+							</section>
+							<div class="videowrapper">
+								<video controls src="${blockData.attachment.url}"></video>
+							</div>
+							<section class="modal-footer2">
+                    			<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+                			</section>
 						</dialog>
 					</li>
 				`			
@@ -152,11 +157,16 @@ let renderBlock = (blockData) => {
 						</picture>
                     </button>
 					   <dialog class="modal-dialog">
-                            <h2>${blockData.title}</h2>
-						<iframe
-							src="${ blockData.attachment.url }"
-						></iframe>
-					<button class="close-button">Close</button>
+                            <section class="topbar">
+								<h2 class="modal-title">${blockData.title}</h2>
+								<button class="close-button">✕</button>
+							</section>
+							<iframe
+								src="${ blockData.attachment.url }">
+							</iframe>
+							<section class="modal-footer2">
+                    			<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+                			</section>
                     </dialog>
 
         		</li>
@@ -178,11 +188,16 @@ let renderBlock = (blockData) => {
 							</picture>
                         </button>
                         <dialog class="modal-dialog">
-                            <h2>${blockData.title}</h2>
-                        <div class="audiowrapper">
-                             <audio controls src="${ blockData.attachment.url }"></audio>
-                        </div>
-                        <button class="close-button">Close</button>
+                            <section class="topbar">
+								<h2 class="modal-title">${blockData.title}</h2>
+								<button class="close-button">✕</button>
+							</section>
+                        	<div class="audiowrapper">
+                            	<audio controls src="${ blockData.attachment.url }"></audio>
+                        	</div>
+                        	<section class="modal-footer2">
+                    			<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+                			</section>
                         </dialog>
                     </li>
                 `           
@@ -212,11 +227,16 @@ let renderBlock = (blockData) => {
 							</picture>
 						</button>
 						<dialog class="modal-dialog">
-							<h2>${blockData.title}</h2>
+							<section class="topbar">
+								<h2 class="modal-title">${blockData.title}</h2>
+								<button class="close-button">✕</button>
+							</section>
 							<div class="videowrapper">
 								${blockData.embed.html}
 							</div>
-							<button class="close-button">Close</button>
+							<section class="modal-footer2">
+                    			<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+                			</section>
 						</dialog>
 					</li>
 				`			

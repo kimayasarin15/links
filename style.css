@@ -367,7 +367,6 @@ dialog {
 
     &::backdrop {
 		background-color: rgb(0 0 0 / 90%);
-		pointer-events: none; 
 	}
 
 
@@ -396,7 +395,8 @@ button {
     text-align: start;
 }
 
-.modal-dialog img {
+.modal-dialog img, 
+.modal-dialog iframe {
     width: 40%;
     display: block;
     margin: var(--spaceS) auto;
@@ -451,27 +451,35 @@ figure {
 
 
 .videowrapper {
-    max-width: 90%;
+    max-width: 100%;
     overflow: hidden;
 }
 
 .videowrapper iframe {
-    max-width: 90%;
+    max-width: 100%;
     display: block;
-    margin-block: 0;
     margin-inline: auto;
     block-size: revert;
-	inline-size: 100%;
-   
+	inline-size: 100%;  
+    margin-block-end: var(--spaceS);
+}
+
+.videowrapper iframe[src*="youtube"] {
+    aspect-ratio: 16 / 9;
+}
+
+.videowrapper iframe[src*="tiktok"] {
+    aspect-ratio: 9 / 16;
+    
 }
 
 .audiowrapper {
     width: 100%;
     padding: var(--spaceS);
     background-color: var(--dark);
+    margin-block-end: var(--spaceS);
     @media (width <600px){
-        width: 80%;
-        
+        width: 80%;    
     }
 }
 

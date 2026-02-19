@@ -11,17 +11,36 @@
 
 
 // this is for my channel blocks to switch between reveal and hide 
-let reveal = document.querySelector('#revealbutton');
-let hide = document.querySelector('#hidebutton');
-let channelBlocks = document.querySelector('#channel-blocks');
+// let reveal = document.querySelector('#revealbutton');
+// let hide = document.querySelector('#hidebutton');
+// let channelBlocks = document.querySelector('#channel-blocks');
 
-reveal.addEventListener('click', () => {
-    channelBlocks.classList.add('reveal');
-});
+// reveal.addEventListener('click', () => {
+//     channelBlocks.classList.add('reveal');
+// });
 
-hide.addEventListener('click', () => {
-    channelBlocks.classList.remove('reveal');
-});
+// hide.addEventListener('click', () => {
+//     channelBlocks.classList.remove('reveal');
+// });
+
+// I used Claude to help me create it as 1 button that toggles between the two as that felt more intuitive than two buttons - I also updated my HTML to just 1 button
+
+// this finds my button id togglebutton
+let toggleButton = document.querySelector('#togglebutton')
+let channelBlocks = document.querySelector('#channel-blocks')
+
+// this is adding the event listener and if it contains the reveal class it should remove it - ie go into 'normal mode'
+// the toggle.Button.textContent shows what text will appear 
+toggleButton.addEventListener('click', () => {
+    if (channelBlocks.classList.contains('reveal')) {
+        channelBlocks.classList.remove('reveal')
+        toggleButton.textContent = 'unmute'
+// this adds the reveal class which means it goes back into 'chaos mode' and similarly changes the text on the button 
+    } else {
+        channelBlocks.classList.add('reveal')
+        toggleButton.textContent = 'mute'
+    }
+})
 
 
 

@@ -33,7 +33,7 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-			<li class="align align1">
+		<li class="align align1">
             <button class="modal-button">
                 <picture>
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -41,12 +41,17 @@ let renderBlock = (blockData) => {
                     <img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
                 </picture>
             </button>
-
             <dialog class="modal-dialog">
-                ${blockData.title ? `<h2>${blockData.title}</h2>` : ''}             
-                <p><a href="${blockData.source.url}" target="_blank">visit link</a></p>
-                <button class="close-button">Close</button>
-            </dialog>
+				<section class="topbar">
+					<h2 class="modal-title">${blockData.title}</h2> 
+					<button class="close-button">✕</button>
+				</section>
+				<img src="${blockData.image.small.src_2x}" alt="${blockData.image.alt_text}">            
+				<section class="modal-footer">
+					<a class="visit-button" href="${blockData.source?.url}" target="_blank">visit link</a>
+					<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+				</section>
+			</dialog>
         </li>
 
 			`
@@ -85,9 +90,14 @@ let renderBlock = (blockData) => {
 			<li class="align3"> 
 				<button class="modal-button">${'read'}</button>
 				<dialog class="modal-dialog">
-					<h2>${blockData.title || 'Text Block'}</h2>
+				  	<section class="topbar">
+						<h2>${blockData.title || 'read'}</h2>
+						<button class="close-button">✕</button>
+                	</section>
 					<p class="modal-content">${blockData.content.html}</p>
-					<button class="close-button">Close</button>
+					<section class="modal-footer2">
+                    	<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+                	</section>
 				</dialog>
 			</li>
 		`
@@ -117,7 +127,6 @@ let renderBlock = (blockData) => {
 						<div class="videowrapper">
 							<video controls src="${blockData.attachment.url}"></video>
 						</div>
-							<p class="description">${blockData.description ? blockData.description.html : ''}</p>
 							<button class="close-button">Close</button>
 						</dialog>
 					</li>
@@ -147,7 +156,6 @@ let renderBlock = (blockData) => {
 						<iframe
 							src="${ blockData.attachment.url }"
 						></iframe>
-					 <p class="description">${blockData.description ? blockData.description.html : ''} </p>
 					<button class="close-button">Close</button>
                     </dialog>
 
@@ -174,7 +182,6 @@ let renderBlock = (blockData) => {
                         <div class="audiowrapper">
                              <audio controls src="${ blockData.attachment.url }"></audio>
                         </div>
-						<p class="description">${blockData.description ? blockData.description.html : ''}</p>
                         <button class="close-button">Close</button>
                         </dialog>
                     </li>
@@ -209,7 +216,6 @@ let renderBlock = (blockData) => {
 							<div class="videowrapper">
 								${blockData.embed.html}
 							</div>
-							<p class="description">${blockData.description ? blockData.description.html : ''}</p>
 							<button class="close-button">Close</button>
 						</dialog>
 					</li>

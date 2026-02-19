@@ -362,7 +362,6 @@ dialog {
         font-family: var(--font-family2);
         font-size: var(--textS);
         padding: calc(var(--spaceS)*0.2);
-        border-radius: 10%;
 
     }
 
@@ -380,11 +379,63 @@ button {
     font-size: var(--textM);
     color: var(--dark);
     background-color: var(--brat);
-    padding: calc(var(--spaceS)*0.2);
+    padding: calc(var(--spaceS)*0.5);
     cursor: pointer;
     margin: var(--spaceS);
 }
 
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spaceS);
+    width: 100%;
+}
+
+.modal-title {
+    font-size: calc(var(--textS) * 1.5);
+    text-align: start;
+}
+
+.modal-dialog img {
+    width: 40%;
+    display: block;
+    margin: var(--spaceS) auto;
+}
+
+.close-button {
+    font-size: calc(var(--textS) * 1.5);
+    padding: var(--spaceS);
+}
+
+.arena-button {
+    background-color: var(--brat);
+    font-family: var(--font-family2);
+    color: var(--dark);
+    padding: var(--spaceS);
+}
+
+.visit-button {
+    background-color: var(--dark);
+    font-family: var(--font-family2);
+    color: var(--brat);
+    padding: var(--spaceS);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spaceS);
+    width: 100%;
+}
+
+.modal-footer2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spaceS);
+    width: 100%;
+}
 
 iframe {
     max-width: 90%;

@@ -335,7 +335,22 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 		// console.log(blockData) // The data for a single block.
 
 		renderBlock(blockData) // Pass the single block’s data to the render function.
-	})
+		})
+		
+		// let channelBlocksEl = document.querySelector('#channel-blocks')
+
+		// document.querySelectorAll('#channel-blocks li').forEach((block) => {
+    	// let sectionObserver = new IntersectionObserver(([entry]) => {
+        // if (entry.isIntersecting) {
+        //     channelBlocksEl.classList.add('scrollhighlight')
+        // } else {
+        //     channelBlocksEl.classList.remove('scrollhighlight')
+        // }
+    	// }, {
+        // rootMargin: '-25% 0% -25% 0%',
+    	// })
+    	// sectionObserver.observe(block)
+		// })
 })
 
 

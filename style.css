@@ -57,6 +57,7 @@ body {
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
     gap: var(--spaceS);
     overflow-x: hidden;
+    /* opacity: 0.3; */
   
 
     p{
@@ -129,6 +130,10 @@ body {
             rotate: 85deg;
         }
     }
+
+    /* &.scrollhighlight {
+        opacity: 1;
+    } */
     
 }   
 

@@ -31,7 +31,7 @@ hide.addEventListener('click', () => {
 // I altered the opacity to change as you scroll I'm not sure I want to do this yet but I wanted to try it out to practice JS
 
 // let highlightScroll = '.scrollhighlight'
-// let blockScroll = document.querySelectorAll('#channel-blocks li')
+// let blockScroll = document.querySelectorAll('#channel-blocks')
 
 
 // blockScroll.forEach((block) => {

@@ -108,6 +108,16 @@ body {
             cursor: pointer; 
             rotate: 0deg;
         }
+
+        .modal-button {
+            &:hover {
+                transform: scale(1.02);
+                
+                @media (width < 700px) {  
+                    transform: none;
+            }
+            }
+        }
     }
 
     li {
@@ -268,13 +278,18 @@ footer {
     p {
         text-align: center;
         font-family: var(--font-family2);
-        font-size: var(--textM);
+        font-size: calc(var(--textS)*1.5);
         color: var(--dark); 
         padding: var(--spaceS);  
 
-    a{
-        color: var(--brat);
-        background-color: var(--dark);
+        a{
+            padding: calc(var(--spaceS)*0.5);
+            color: var(--brat);
+            background-color: var(--dark);
+            &:hover {
+                color: var(--dark);
+                background-color: var(--brat);
+            }
         }
     }
 
@@ -328,6 +343,7 @@ dialog {
         font-family: var(--font-family2);
         font-size: var(--textS);
         padding: calc(var(--spaceS)*0.2);
+        cursor: pointer;
 
     }
 
@@ -337,15 +353,6 @@ dialog {
 
 }
 
-button {
-    &:hover {
-        transform: scale(1.02);
-        
-        @media (width < 700px) {  
-            transform: none;
-    }
-    }
-}
 
 .modal-button, #play {
     font-family: var(--font-family2);
@@ -427,15 +434,7 @@ button {
 
 .read-button {
     display: block;
-    margin-inline: auto;
-    
-    &:hover {
-        transform: scale(1.1);
-
-        @media (width < 600px) {
-            transform: none;
-        }
-    }   
+    margin-inline: auto; 
 }
 
 iframe {

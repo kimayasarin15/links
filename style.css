@@ -136,10 +136,16 @@ body {
             rotate: 85deg;
         }
     }
-/* 
-    &.scrollhighlight {
+
+    li {
+        opacity: 0.3;
+         
+        &.scrollhighlight {
         opacity: 1;
-    } */
+    }
+
+    }
+
     
 }   
 
@@ -279,6 +285,10 @@ header {
 
     h2 {
         padding-block-start: var(--spaceL);
+    }
+
+    @media (width < 600px) {
+        block-size: 95vh;
     }
 }
 
@@ -544,7 +554,11 @@ audio {
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
+
+        @media (width < 600px) {
+            transform: none;
+        }
     }
 
     a {
@@ -574,13 +588,13 @@ audio {
         font-size: var(--textS);
 }
 
-header .web-buttons .buttontext{
+/* header .web-buttons .buttontext{
     padding-block-start: var(--spaceS);
-}
+} */
 
-main .web-buttons .buttontext{
+/* main .web-buttons .buttontext{
     padding-block-end: var(--spaceS);
-}
+} */
 
 svg {
     fill: var(--dark);

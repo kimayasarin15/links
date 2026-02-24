@@ -337,20 +337,21 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 		renderBlock(blockData) // Pass the single block’s data to the render function.
 		})
 		
-		// let channelBlocksEl = document.querySelector('#channel-blocks')
+		// this has to go here so it can work after all the blocks have been rendered
+		let channelBlocksEl = document.querySelector('#channel-blocks')
 
-		// document.querySelectorAll('#channel-blocks li').forEach((block) => {
-    	// let sectionObserver = new IntersectionObserver(([entry]) => {
-        // if (entry.isIntersecting) {
-        //     channelBlocksEl.classList.add('scrollhighlight')
-        // } else {
-        //     channelBlocksEl.classList.remove('scrollhighlight')
-        // }
-    	// }, {
-        // rootMargin: '-25% 0% -25% 0%',
-    	// })
-    	// sectionObserver.observe(block)
-		// })
+		document.querySelectorAll('#channel-blocks li').forEach((block) => {
+			let sectionObserver = new IntersectionObserver(([entry]) => {
+				if (entry.isIntersecting) {
+					block.classList.add('scrollhighlight')
+				} else {
+					block.classList.remove('scrollhighlight')
+				}
+			}, {
+				rootMargin: '-25% 0% -25% 0%',
+			})
+			sectionObserver.observe(block)
+		})
 })
 
 

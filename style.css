@@ -220,12 +220,12 @@ h2 {
     margin: var(--spaceS);
 }
 
-h3 {
+/* h3 {
     font-size: var(--textS);
     font-family: var(--font-family);
     color: var(--dark);
     padding: var(--spaceS);  
-}
+} */
 
 p {
     font-size: var(--textS);
@@ -235,7 +235,7 @@ p {
 }
 
 @media (width < 600px) {
-    h3, p {
+    p {
         font-size: calc(var(--textS)*0.6);    
     }
 
@@ -521,6 +521,11 @@ audio {
 
 }
 
+.image {
+    /* adds back my default cursor for images for now as you can't click on them */
+    /* still need to decide what to do with them */
+    cursor: default;
+}
 
 /* come back to this */
 /* .image {

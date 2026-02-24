@@ -67,15 +67,26 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Image') {
 		let imageItem = 
         `
-          <li class="hover">
-            <figure class="polaroid">
-                <picture class="image">
-                    <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
-                    <source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
-                    <img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
-                </picture>
-            </figure>
-        </li>
+		<li class="hover align2">
+			<button class="modal-button-image">
+				<figure class="polaroid">
+					<picture class="image">
+						<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+						<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+						<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+					</picture>
+				</figure>
+			</button>
+			<dialog class="modal-dialog-image">
+				<figure class="polaroid">
+					<picture class="image">
+						<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+						<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+						<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+					</picture>
+				</figure>
+			</dialog>
+		</li>
     `
         channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 		// I left the images as they are for now but I may add modals or some other interaction later

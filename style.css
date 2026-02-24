@@ -84,7 +84,7 @@ body {
     }
 
     &.reveal {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
 
         @media (width < 950px) {
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -350,14 +350,12 @@ dialog {
     }
 
     &::backdrop {
-		background-color: rgb(0 0 0 / 90%);
+		background-color: rgb(0 0 0 / 75%);
 	}
-
 
 }
 
-
-button {
+.modal-button {
     font-family: var(--font-family2);
     font-size: var(--textM);
     color: var(--dark);
@@ -367,6 +365,10 @@ button {
     margin: var(--spaceS);
 }
 
+.modal-dialog-image {
+    background: transparent;
+
+}
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -403,6 +405,7 @@ button {
     font-family: var(--font-family2);
     color: var(--dark);
     padding: var(--spaceS);
+    margin-block-start: var(--spaceS);
 }
 
 .visit-button {
@@ -410,6 +413,7 @@ button {
     font-family: var(--font-family2);
     color: var(--brat);
     padding: var(--spaceS);
+    margin-block-start: var(--spaceS);
 }
 
 .modal-footer {
@@ -505,7 +509,7 @@ audio {
 .image {
     /* adds back my default cursor for images for now as you can't click on them */
     /* still need to decide what to do with them */
-    cursor: default;
+    cursor: pointer;
 }
 
 /* come back to this */

@@ -137,4 +137,24 @@ document.addEventListener('click', (event) => {
 });
 
 
+// this is a new modal for my images as I wanted to style them differently so gave them different classes
+document.querySelector('#channel-blocks').addEventListener('click', (event) => {
+
+    if (event.target.closest('.modal-button-image')) {
+        let dialog = event.target.closest('li').querySelector('.modal-dialog-image');
+        dialog.showModal();
+    }
+});
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal-dialog-image')) {
+        event.target.close();
+    }
+});
+
+document.addEventListener('click', (event) => {
+    if (event.target.tagName === 'DIALOG') {
+        event.target.close();
+    }
+});
 

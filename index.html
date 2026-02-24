@@ -10,11 +10,21 @@
     </head>
 	<body>
 		<header>
-			<div id="click"> <h1 id="channel-title"></h1> </div>
-            <!-- <p class="web-buttons"><a href="#main-section">extended mix</a></p> -->
-            <section class="web-buttons">
-                <a href="#main-section">extended mix</a>
-                <p class="arrow">↓</p>
+            <!-- I exported these icons from the iconify plugin on figma -->
+           <button id="play">
+            <svg id="play-icon" width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0V14L11 7L0 0Z"/>
+            </svg>
+            <svg id="pause-icon" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 14V0H12V14H8ZM0 14V0H4V14H0Z"/>
+            </svg>
+        </button>
+			<div id="playing"> <h1 id="channel-title"></h1> </div>
+           <section class="web-buttons">
+                <a href="#main-section">
+                    <p class="buttontext">extended mix</p>
+                    <p class="buttontext">↓</p>
+                </a>
             </section>
 		</header>
 		<main id="main-section">
@@ -29,16 +39,18 @@
                 <section id="channel-description"></section>
                 <a class="arena-button" id="channel-link" href="" target="_blank">view on are.na</a>
             </dialog>
-                <button id="togglebutton">unmute</button>
+                <button id="togglebutton">a-side</button>
             </section>
 				<ul id="channel-blocks"></ul>
 				<!-- <p><span id="channel-count"></span> blocks</p> -->
 			</section>
             <section class="bottom-back">
-            <section class="web-buttons">
-                <p class="arrow">↑</p>
-                <a href="#">back to top</a>
-            </section>
+                <section class="web-buttons">
+                    <a href="#">
+                        <p class="buttontext">↑</p>
+                        <p class="buttontext">back to top</p>
+                    </a>
+                </section>
             </section>
             <!-- <section class="bottom-back">
             <p class="web-buttons"><a href="#">back to top</a></p>  

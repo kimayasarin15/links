@@ -9,6 +9,29 @@
 //     text.classList.toggle(highlightClass)
 // })
 
+// I used Claude to help me create this play and pause button
+// It is just toggling between my two states but the button has to technically show the state that it's not currently in ie shows the pause when the animation plays so you can stop it
+// I first define my variables
+let play = document.querySelector('#play')
+let channelTitle = document.querySelector('#channel-title')
+let playIcon = document.querySelector('#play-icon')
+let pauseIcon = document.querySelector('#pause-icon')
+
+// it first checks if the h1 currently has the class 'playing' on it
+// if it does, it removes the class, shows the play icon, and hides the pause icon
+play.addEventListener('click', () => {
+    if (channelTitle.classList.contains('playing')) {
+        channelTitle.classList.remove('playing')
+        playIcon.style.display = 'block'
+        pauseIcon.style.display = 'none'
+
+// If it doesn't, it adds the class, shows the pause and hides the play icon
+    } else {
+        channelTitle.classList.add('playing')
+        playIcon.style.display = 'none'
+        pauseIcon.style.display = 'block'
+    }
+})
 
 // this is for my channel blocks to switch between reveal and hide 
 // let reveal = document.querySelector('#revealbutton');
@@ -34,11 +57,11 @@ let channelBlocks = document.querySelector('#channel-blocks')
 toggleButton.addEventListener('click', () => {
     if (channelBlocks.classList.contains('reveal')) {
         channelBlocks.classList.remove('reveal')
-        toggleButton.textContent = 'unmute'
+        toggleButton.textContent = 'a-side'
 // this adds the reveal class which means it goes back into 'chaos mode' and similarly changes the text on the button 
     } else {
         channelBlocks.classList.add('reveal')
-        toggleButton.textContent = 'mute'
+        toggleButton.textContent = 'b-side'
     }
 })
 

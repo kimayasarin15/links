@@ -46,7 +46,8 @@ play.addEventListener('click', () => {
 //     channelBlocks.classList.remove('reveal');
 // });
 
-// I used Claude to help me create it as 1 button that toggles between the two as that felt more intuitive than two buttons - I also updated my HTML to just 1 button
+// I used Claude to be able to change the text of the button 
+// It toggles between two states 
 
 // this finds my button id togglebutton
 let toggleButton = document.querySelector('#togglebutton')
@@ -64,8 +65,6 @@ toggleButton.addEventListener('click', () => {
         toggleButton.textContent = 'b-side'
     }
 })
-
-
 
 
 // I copied this from the class website and updated to match my variables
@@ -90,7 +89,7 @@ toggleButton.addEventListener('click', () => {
 // })
 
 
-// this is my modal js for my main button - I re wrote it because the one below was only looking in channel blocks and this isn't in CB but will look into seeing if theres a way to combine them
+// this is my modal js for my about channel button- I re wrote it because the one below was only looking in channel blocks and this isn't in CB but will look into seeing if theres a way to combine them
 
 let modalButton = document.querySelector('.modal-button')
 let modalDialog = document.querySelector('main dialog')
@@ -111,7 +110,7 @@ document.addEventListener('click', (event) => {
 })
 
 
-// I used the help of Claude to get my text modals to work, which follows a simialr structure to the one I did above but allows it to work for all
+// I used the help of Claude to get my modals to work, which follows a simialr structure to the one I did above but allows it to work for all
 
 // this is searching within my channel blocks
 document.querySelector('#channel-blocks').addEventListener('click', (event) => {
@@ -137,7 +136,7 @@ document.addEventListener('click', (event) => {
 });
 
 
-// this is a new modal for my images as I wanted to style them differently so gave them different classes
+// this is a new modal for my images as I wanted to style them differently so gave them different classes but used the same js
 document.querySelector('#channel-blocks').addEventListener('click', (event) => {
 
     if (event.target.closest('.modal-button-image')) {

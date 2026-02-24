@@ -80,18 +80,18 @@ body {
     }
 
     @media (width <500px){
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     &.reveal {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: repeat(5, minmax(0, 1fr));
 
         @media (width < 950px) {
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         @media (width < 700px) {
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         @media (width < 500px) {
@@ -104,19 +104,7 @@ body {
             align-self: center; 
             filter: invert(0); 
             cursor: pointer; 
-
-
-            &.align1 {
-                rotate: 0deg;
-            }
-
-            &.align2 {
-                rotate: 0deg;
-            }
-
-            &.align3 {
-                rotate: 0deg;
-            }
+            rotate: 0deg;
         }
     }
 
@@ -124,19 +112,7 @@ body {
         filter: invert(1);       
         mix-blend-mode: multiply; 
         cursor: default;
-        /* filter: hue-rotate(90deg); */
-
-        &.align1 {
-            rotate: 150deg;
-        }
-
-        &.align2{
-            rotate: 40deg;
-        }
-
-        &.align3 {
-            rotate: 85deg;
-        }
+        rotate: var(--random-rotate);
     }
 
     li {
@@ -488,13 +464,6 @@ figure {
     aspect-ratio: 16 / 9;
 }
 
-.videowrapper iframe[src*="tiktok"] {
-    width: 100%;
-    height: 100%;
-    /* transform: scale(0.95); */
-    aspect-ratio: 9 / 16;    
-}
-
 .audiowrapper {
     width: 100%;
     padding: var(--spaceS);
@@ -611,3 +580,17 @@ svg {
 #play-icon {
     display: block;
 }
+
+.polaroid {
+    background-color: var(--light);
+    padding: var(--spaceS);
+    padding-block-end: calc(var(--spaceS)*3);
+    filter: drop-shadow(0 0.2rem 0.2rem rgb(0 0 0 / 20%));
+
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+

@@ -33,7 +33,7 @@ let renderBlock = (blockData) => {
 		// Declares a “template literal” of the dynamic HTML we want.
 		let linkItem =
 			`
-		<li class="align align1">
+		<li class="align">
             <button class="modal-button">
                 <picture>
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -67,8 +67,8 @@ let renderBlock = (blockData) => {
 	else if (blockData.type == 'Image') {
 		let imageItem = 
         `
-          <li class="hover align2">
-            <figure>
+          <li class="hover">
+            <figure class="polaroid">
                 <picture class="image">
                     <source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
                     <source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
@@ -87,7 +87,7 @@ let renderBlock = (blockData) => {
 		// I used Claude to help me format my text in <dialog> elements. I had it like this in my orginal html. The || means if there is no block title display 'read more'
 		
 		let textItem = `
-			<li class="align3"> 
+			<li> 
 				<button class="modal-button read-button">${'read'}</button>
 				<dialog class="modal-dialog">
 				  	<section class="topbar">
@@ -114,7 +114,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-					<li class="align1">
+					<li>
 						<button class="modal-button">
 							<picture>
                     			<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -148,7 +148,7 @@ let renderBlock = (blockData) => {
 			// …up to you!
 			let pdfItem =
 				   `
-        		<li class="align2">
+        		<li>
 				   <button class="modal-button">
 						<picture>
 							<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -179,7 +179,7 @@ let renderBlock = (blockData) => {
 			// …still up to you, but here’s an `audio` element:
 			  let audioItem =
                 `
-                    <li class="align align3">
+                    <li class="align">
                         <button class="modal-button">
                             <picture>
 								<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -216,9 +216,35 @@ let renderBlock = (blockData) => {
 		// Linked video!
 		if (embedType.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
-			// Claude helped me this this up to fit the format of my modals but I can't get the js to work. The model button shows the thumbnail image and the video title. When open it shows the title, emdeded content, description and close button. I wanted to use thumnail images for my videos as it was taking up too much space on the page.
-			let linkedVideoItem = `
-					<li class="align1">
+			// Got help from Michael on slack - this targets tiktok videos specifically. I was having issues styling them because of their hard coded embdeds. So I styled my tiktoks similarly to my links where you can view the live link but you just see the thumbnail. The other videos (mostly youtube) are shown how they were preivously with iframes that you can play
+			    if (blockData.source.url.includes('tiktok.com')) {
+				let tiktokItem = `
+					<li class="align">
+						<button class="modal-button">
+							<picture>
+								<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
+								<source media="(width < 1000px)" srcset="${blockData.image.medium.src_2x}">
+								<img alt="${blockData.image.alt_text}" src="${blockData.image.large.src_2x}">
+							</picture>
+						</button>
+						<dialog class="modal-dialog">
+							<section class="topbar">
+								<h2 class="modal-title">${blockData.title}</h2> 
+								<button class="close-button">✕</button>
+							</section>
+							<img src="${blockData.image.small.src_2x}" alt="${blockData.image.alt_text}">            
+							<section class="modal-footer">
+								<a class="visit-button" href="${blockData.source?.url}" target="_blank">visit link</a>
+								<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+							</section>
+						</dialog>
+					</li>
+				`
+				channelBlocks.insertAdjacentHTML('beforeend', tiktokItem)
+			
+			} else {
+				let linkedVideoItem = `
+					<li>
 						<button class="modal-button">
 							<picture>
 								<source media="(width < 500px)" srcset="${blockData.image.small.src_2x}">
@@ -235,12 +261,13 @@ let renderBlock = (blockData) => {
 								${blockData.embed.html}
 							</div>
 							<section class="modal-footer2">
-                    			<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
-                			</section>
+								<a class="arena-button" href="https://www.are.na/block/${blockData.id}" target="_blank">view on are.na</a>
+							</section>
 						</dialog>
 					</li>
-				`			
-				channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem);
+				`
+				channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
+			}
 			// More on `iframe`:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}
@@ -250,7 +277,7 @@ let renderBlock = (blockData) => {
 			// …up to you!
 			let linkedAudioitem =
 				`
-				<li class="align2">
+				<li>
 					<div class="embed-wrapper">
 						${ blockData.embed.html }
 					</div>
@@ -262,6 +289,15 @@ let renderBlock = (blockData) => {
 
 		}
 	}
+	// I used Claude to help me with randomly rotating all my blocks using math.random to help make it feel more chaotic as before I had manually done it
+	// this selects all the li elements
+	let blocks = document.querySelectorAll('#channel-blocks li')
+	// this selects the 'last block' which is the most recently added block everytime it renders the block
+  	let lastBlock = blocks[blocks.length - 1]
+	// this gives it a random rotation: math random picks a decimal from 0 and 1, it is then multiplied by 360 to give it an angle value, then math floor rounds it down
+	// so if it picks 0.5, it will rotate 180deg 
+  	lastBlock.style.setProperty('--random-rotate', `${Math.floor(Math.random() * 360)}deg`)
+
 }
 
 
@@ -338,8 +374,6 @@ fetchJson(`https://api.are.na/v3/channels/${channelSlug}/contents?per=100&sort=p
 		})
 		
 		// this has to go here so it can work after all the blocks have been rendered
-		let channelBlocksEl = document.querySelector('#channel-blocks')
-
 		document.querySelectorAll('#channel-blocks li').forEach((block) => {
 			let sectionObserver = new IntersectionObserver(([entry]) => {
 				if (entry.isIntersecting) {

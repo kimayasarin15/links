@@ -30,15 +30,16 @@
 /* I remember we dicussed light/dark mode in class but I looked it up on MDN to check how to do it 
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme
 I just swapped my root colours around  */
-@media (prefers-color-scheme: dark) {
+/* I decided to remove this as I felt it was losing its vibe in dark mode but left the code in to reference later */
+/* @media (prefers-color-scheme: dark) {
     :root {
         --light: #191919;
         --dark: #FFFFFF;
     }
-}
+} */
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-behavior
-I added this to make my scrolling smooth when I press the 'scroll down button' */
+I added this to make my scrolling smooth when I press the 'extended mix below' */
 html {
     scroll-behavior: smooth;
 }
@@ -122,6 +123,7 @@ body {
     li {
         filter: invert(1);       
         mix-blend-mode: multiply; 
+        cursor: default;
         /* filter: hue-rotate(90deg); */
 
         &.align1 {

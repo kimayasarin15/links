@@ -355,7 +355,7 @@ dialog {
 
 }
 
-.modal-button {
+.modal-button, #play {
     font-family: var(--font-family2);
     font-size: var(--textM);
     color: var(--dark);
@@ -507,18 +507,10 @@ audio {
 }
 
 .image {
-    /* adds back my default cursor for images for now as you can't click on them */
-    /* still need to decide what to do with them */
     cursor: pointer;
 }
 
-/* come back to this */
-/* .image {
-    display: block;
-    :hover {
-        transform: scale(1.8);
-    }
-}   */
+
 
 .web-buttons {
     background-color: var(--dark);
@@ -563,19 +555,13 @@ audio {
         font-size: var(--textS);
 }
 
-/* header .web-buttons .buttontext{
-    padding-block-start: var(--spaceS);
-} */
-
-/* main .web-buttons .buttontext{
-    padding-block-end: var(--spaceS);
-} */
 
 svg {
     fill: var(--dark);
     transform: scale(1.3);
     padding: calc(var(--spaceS)*0.5);
 }
+
 
 #pause-icon {
     display: none;

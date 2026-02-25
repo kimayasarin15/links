@@ -1,5 +1,5 @@
 
-
+// I have left a lot of my older JS interactions commented out so I can come back to reference them
 // Another test to try out JS - not ussing this now 
 // let highlightClass = 'highlight'
 // let text = document.querySelector('h1')

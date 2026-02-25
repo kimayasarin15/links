@@ -271,7 +271,7 @@ footer {
     margin-block-end: calc(var(--spaceL)*2);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--spaceM);
     padding-inline: var(--spaceL);
 

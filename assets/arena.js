@@ -11,14 +11,14 @@ let placeChannelInfo = (channelData) => {
 	// let channelCount = document.querySelector('#channel-count')
 	// I was getting some console errors because I wasn't using this so I commented it out for now
 	let channelLink = document.querySelector('#channel-link')
-    let channelSlug = document.querySelector('#channel-slug')
+    let channelSlugNew = document.querySelector('#channel-slug')
 
 	// Then set their content/attributes to our data:
 	channelTitle.innerHTML = channelData.title
 	channelDescription.innerHTML = channelData.description.html
 	// channelCount.innerHTML = channelData.counts.blocks
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
-    channelSlug.innerHTML = channelData.slug
+    channelSlugNew.innerHTML = channelData.slug
 }
 
 
